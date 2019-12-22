@@ -1,0 +1,4 @@
+neovim
+flake8
+yapf
+ipython
