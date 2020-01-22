@@ -128,6 +128,6 @@ autocmd FileType markdown let g:indentLine_enabled=0
 :set ic
 "search case sensitive
 ":set noic
-"
-let &shell='bash --login'
+
+"let &shell='/bin/bash --login'
 
