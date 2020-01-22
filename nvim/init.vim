@@ -99,6 +99,9 @@ autocmd insertleave,completedone * if pumvisible() == 0 | pclose | endif
 " configure code checker
 let g:neomake_python_enabled_makers = ['flake8']
 
+" configure autoformatter
+let g:neoformat_enabled_python = ['autopep8']
+
 "file finder shortcut
 nnoremap <C-p> :FuzzyOpen<CR>
 
@@ -111,4 +114,20 @@ colorscheme solarized8_flat
 "highlight pep8 col 79 (only when exceeded)
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
+
+"start with folds open
+set foldlevel=10
+
+"Gdiff vertical split
+set diffopt+=vertical
+
+"Dont hide anhthing (in mardown files)
+autocmd FileType markdown let g:indentLine_enabled=0
+
+"search not case sensitive
+:set ic
+"search case sensitive
+":set noic
+"
+let &shell='bash --login'
 

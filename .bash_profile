@@ -47,10 +47,19 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # Powerline
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-source /usr/local/miniconda3/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+# powerline-daemon -q
+# POWERLINE_BASH_CONTINUATION=1
+# POWERLINE_BASH_SELECT=1
+# source /usr/local/miniconda3/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+
+#short prompt instead
+export PS1="\W$ "
 
 # for sphinx documentations
 export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+
+# very important:
+fortune | cowsay
+
+# no zshellwarnings all the time
+export BASH_SILENCE_DEPRECATION_WARNING=1

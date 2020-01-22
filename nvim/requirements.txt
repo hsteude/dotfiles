@@ -1,4 +1,7 @@
 neovim
 flake8
+autopep8
 yapf
 ipython
+pdbpp
+
