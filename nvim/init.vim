@@ -45,6 +45,8 @@ call plug#begin(g:plugged_home)
   Plug 'mgedmin/python-imports.vim'
   " tag management (needed by python imports)
   Plug 'ludovicchabant/vim-gutentags'
+  " for latex
+  Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -129,5 +131,12 @@ autocmd FileType markdown let g:indentLine_enabled=0
 "search case sensitive
 ":set noic
 
-"let &shell='/bin/bash --login'
+" Clear last search highlighting
+map <Space> :noh<cr>
 
+" Autoreload files after a while
+set autoread
+au FocusGained * :checktime
+
+" More beautiful indentation line
+let g:indentLine_char = '│'
