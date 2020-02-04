@@ -140,3 +140,6 @@ au FocusGained * :checktime
 
 " More beautiful indentation line
 let g:indentLine_char = '│'
+
+"line breaks with indentation
+set breakindento
