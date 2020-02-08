@@ -14,6 +14,7 @@ call plug#begin(g:plugged_home)
   " color themes
   Plug 'matsen/nvim-colors-solarized'
   Plug 'lifepillar/vim-solarized8'
+  Plug 'joshdick/onedark.vim'
   " better visual guide (indentation level lines)
   Plug 'yggdroot/indentline'
   " Git integration
@@ -26,7 +27,7 @@ call plug#begin(g:plugged_home)
   " surround commands
   Plug 'tpope/vim-surround'
   " better syntax highlighting
-  Plug 'numirias/semshi'
+  Plug 'sheerun/vim-polyglot'
   " add iron to send code ipython repl
   Plug 'Vigemus/iron.nvim'
   " commenting and uncomenting (cc: comment, cu: uncomment)
@@ -44,7 +45,7 @@ call plug#begin(g:plugged_home)
   " python autoimport
   Plug 'mgedmin/python-imports.vim'
   " tag management (needed by python imports)
-  Plug 'ludovicchabant/vim-gutentags'
+  "Plug 'ludovicchabant/vim-gutentags'
   " for latex
   Plug 'lervag/vimtex'
 
@@ -110,8 +111,12 @@ nnoremap <C-p> :FuzzyOpen<CR>
 "show hidden files in nerdtree
 let NERDTreeShowHidden=1
 
+" some color cheme settings
+let g:onedark_hide_endofbuffer=1
+let g:onedark_terminal_italics=1
 set background=dark " or light
-colorscheme solarized8_flat
+"colorscheme solarized8_flat
+colorscheme onedark
 
 "highlight pep8 col 79 (only when exceeded)
 highlight ColorColumn ctermbg=magenta
@@ -142,4 +147,16 @@ au FocusGained * :checktime
 let g:indentLine_char = '│'
 
 "line breaks with indentation
-set breakindento
+set breakindent
+
+"""" TAGS
+" also look for tags in `libtags` in cwd
+set tags=tags;/,libtags;/
+" Make ctags from all python libraries
+command! -bar MakeLibTags !ctags -R --languages=Python --exclude='*.pyx' --exclude='*.pxd' -f libtags . `python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
+" Make ctags just from local project
+command! -bar MakeTags !ctags -R --languages=Python --exclude='*.pyx' --exclude='*.pxd' -f tags .
+" Make both ctags for all python libraries and local project
+command! MakeAllTags silent MakeTags|silent MakeLibTags|redraw!
+" On python file save, update local ctags
+autocmd BufWritePost *.py silent MakeTags|exe ':redraw!'

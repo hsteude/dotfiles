@@ -4,4 +4,5 @@ autopep8
 yapf
 ipython
 pdbpp
+ibdb
 neovim-remote
