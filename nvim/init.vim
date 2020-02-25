@@ -1,4 +1,4 @@
- " Specify plug in manager
+" Specify plug in manager
 if has('win32') || has('win64')
   let g:plugged_home = '~/AppData/Local/nvim/plugged'
 else
@@ -12,9 +12,11 @@ call plug#begin(g:plugged_home)
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   " color themes
-  Plug 'matsen/nvim-colors-solarized'
   Plug 'lifepillar/vim-solarized8'
-  Plug 'joshdick/onedark.vim'
+  Plug 'rakr/vim-one'
+  Plug 'arcticicestudio/nord-vim'
+  " nice icons
+  Plug 'ryanoasis/vim-devicons'
   " better visual guide (indentation level lines)
   Plug 'yggdroot/indentline'
   " Git integration
@@ -48,6 +50,8 @@ call plug#begin(g:plugged_home)
   "Plug 'ludovicchabant/vim-gutentags'
   " for latex
   Plug 'lervag/vimtex'
+  " Python docstrings
+  Plug 'heavenshell/vim-pydocstring'
 
 call plug#end()
 
@@ -97,7 +101,7 @@ syntax enable
 
 " enable auto complete
 let g:deoplete#enable_at_startup = 1
-autocmd insertleave,completedone * if pumvisible() == 0 | pclose | endif
+set completeopt-=preview "no splits for completion options
 
 " configure code checker
 let g:neomake_python_enabled_makers = ['flake8']
@@ -115,8 +119,9 @@ let NERDTreeShowHidden=1
 let g:onedark_hide_endofbuffer=1
 let g:onedark_terminal_italics=1
 set background=dark " or light
+let g:one_allow_italics = 1
 "colorscheme solarized8_flat
-colorscheme onedark
+colorscheme one
 
 "highlight pep8 col 79 (only when exceeded)
 highlight ColorColumn ctermbg=magenta
@@ -149,6 +154,9 @@ let g:indentLine_char = '│'
 "line breaks with indentation
 set breakindent
 
+" no ~ at stark of line
+set fcs=eob:\ 
+
 """" TAGS
 " also look for tags in `libtags` in cwd
 set tags=tags;/,libtags;/
@@ -160,3 +168,7 @@ command! -bar MakeTags !ctags -R --languages=Python --exclude='*.pyx' --exclude=
 command! MakeAllTags silent MakeTags|silent MakeLibTags|redraw!
 " On python file save, update local ctags
 autocmd BufWritePost *.py silent MakeTags|exe ':redraw!'
+
+" for pydocstrings
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+let g:pydocstring_templates_dir = '~/.vim/plugged/vim-pydocstring/test/templates/numpy'
