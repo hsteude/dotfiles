@@ -15,6 +15,8 @@ call plug#begin(g:plugged_home)
   Plug 'lifepillar/vim-solarized8'
   Plug 'rakr/vim-one'
   Plug 'arcticicestudio/nord-vim'
+  Plug 'ayu-theme/ayu-vim'
+  Plug 'drewtempelmeyer/palenight.vim'
   " nice icons
   Plug 'ryanoasis/vim-devicons'
   " better visual guide (indentation level lines)
@@ -29,7 +31,8 @@ call plug#begin(g:plugged_home)
   " surround commands
   Plug 'tpope/vim-surround'
   " better syntax highlighting
-  Plug 'sheerun/vim-polyglot'
+  Plug 'numirias/semshi'
+  "Plug 'sheerun/vim-polyglot'
   " add iron to send code ipython repl
   Plug 'Vigemus/iron.nvim'
   " commenting and uncomenting (cc: comment, cu: uncomment)
@@ -120,8 +123,20 @@ let g:onedark_hide_endofbuffer=1
 let g:onedark_terminal_italics=1
 set background=dark " or light
 let g:one_allow_italics = 1
+let g:palenight_terminal_italics=1
 "colorscheme solarized8_flat
-colorscheme one
+"let ayucolor="mirage"
+colorscheme palenight
+
+function MyCustomHighlights()
+    "hi semshiGlobal      ctermfg=red guifg=#ff0000
+    hi semshiBuiltin          guifg=#C891E9
+    hi semshiAttribute        guifg=#8ADDFF
+    hi semshiImported         guifg=#FFCB6A gui=bold
+    hi semshiSelected         guifg=#ffffff guibg=#81B1FF
+    hi semshiLocal            guifg=#81B1FF
+endfunction
+autocmd FileType python call MyCustomHighlights()
 
 "highlight pep8 col 79 (only when exceeded)
 highlight ColorColumn ctermbg=magenta
