@@ -1,4 +1,3 @@
-# alias bash
 alias ls='ls -hFG'
 alias ll='ls -lhFG'
 alias la='ls -lhAF'
@@ -17,3 +16,4 @@ alias vi='nvim'
 alias weather='curl wttr.in'
 alias LHT='cd ~/Documents/LHT_local/'
 alias gs='git status'
+alias githist='git log --graph --abbrev-commit --decorate --date=relative --all'
