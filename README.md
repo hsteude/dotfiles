@@ -1,4 +1,6 @@
-# These are my dotfile
+# dotfiles, dotfiles, dotfiles
+
+Mostly for python development and some tex stuff. I use zsh as shell and nvim as text editor.
 
 ## Installation
 
