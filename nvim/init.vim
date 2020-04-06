@@ -1,3 +1,9 @@
+" install vim plug if not done yet 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 " Specify plug in manager
 if has('win32') || has('win64')
   let g:plugged_home = '~/AppData/Local/nvim/plugged'
@@ -168,9 +174,6 @@ let g:indentLine_char = '│'
 
 "line breaks with indentation
 set breakindent
-
-" no ~ at stark of line
-set fcs=eob:\ 
 
 """" TAGS
 " also look for tags in `libtags` in cwd

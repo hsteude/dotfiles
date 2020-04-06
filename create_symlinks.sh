@@ -1,6 +1,7 @@
 #!/bin/bash
 ln -s ~/dotfiles/.aliases ~/.aliases
 ln -s ~/dotfiles/.bash_profile ~/.bash_profile
+rm ~/.bashrc
 ln -s ~/dotfiles/.bashrc ~/.bashrc
 mkdir .config/
 ln -s ~/dotfiles/nvim ~/.config/nvim

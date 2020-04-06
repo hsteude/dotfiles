@@ -42,5 +42,3 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # ipbd instead of pdb by default breakpoint
 export PYTHONBREAKPOINT=ipdb.set_trace
-
-source /Users/henrik/Library/Preferences/org.dystroy.broot/launcher/bash/br
