@@ -15,7 +15,7 @@ If required:
 
 Install necessary cmd tools
 ```bash
-  sudo apt-get install neovim git wget curl zsh gcc, cowsay, fortune -y
+  sudo apt-get install neovim git wget curl zsh gcc ctags cowsay fortune -y
   ln -s /usr/games/cowsay /usr/bin/cowsay
   ln -s /usr/games/fortune /usr/bin/fortune
   cd; git clone https://github.com/hsteude/dotfiles.git
@@ -29,6 +29,12 @@ bash Miniconda3-latest-Linux-x86_64.sh
 Create symlinks
 ```
 bash ~/dotfiles/create_symlinks.sh
+```
+
+Install Vim Plug
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
 Install python requirements
