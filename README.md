@@ -15,7 +15,7 @@ If required:
 
 Install necessary cmd tools
 ```shell
-  sudo apt-get install neovim git wget curl zsh gcc ctags cowsay fortune -y
+  sudo apt-get install neovim git wget curl zsh gcc ctags cowsay fortune lua5.3 -y
   ln -s /usr/games/cowsay /usr/bin/cowsay
   ln -s /usr/games/fortune /usr/bin/fortune
   cd; git clone https://github.com/hsteude/dotfiles.git
@@ -33,7 +33,7 @@ bash ~/dotfiles/create_symlinks.sh
 
 Install Vim Plug
 ```shell
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
