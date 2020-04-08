@@ -1,0 +1,6 @@
+[user]
+	name = Henrik
+	email = henrik.steude@ginkgo-analytics.com
+
+[core]
+	editor = nvim
