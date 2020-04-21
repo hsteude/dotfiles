@@ -52,4 +52,25 @@ pip install -r ~/dotfiles/nvim/requirements.txt
 ```
 
 
-
+# Install on ec2 ami
+```shell
+sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
+sudo yum install tmux tree ripgrep gcc git wget zsh cowsay fortune-mod.x86_64 -y
+git clone https://github.com/jhawthorn/fzy.git
+cd fzy; sudo make install; cd
+sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo yum install -y neovim
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sudo bash Miniconda3-latest-Linux-x86_64.sh
+cd; git clone https://github.com/hsteude/dotfiles.git
+bash ~/dotfiles/create_symlinks.sh
+source ~/.bashrc
+/usr/local/miniconda/bin/conda init
+pip install -r ~/dotfiles/nvim/requirements.txt
+echo "let g:python3_host_prog = '$(which python)'" >> ~/dotfiles/nvim/init.vim
+echo 'let g:semshi#excluded_buffers = ['*']' >> ~/dotfiles/nvim/init.vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim +'PlugInstall' +'UpdateRemotePlugins' +qa
+echo "export PATH=$PATH:~/.local/bin"
+```

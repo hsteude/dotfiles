@@ -98,7 +98,10 @@ if MyOnBattery()
 else
   call neomake#configure#automake('nw', 1000)
 endif
-" set spell spelllang=en,de "spell checking
+"
+"spell checking
+set spell spelllang=en
+set spellfile=~/dotfiles/nvim/spell/en.utf-8.add
 syntax on
 syntax enable
 
@@ -223,3 +226,6 @@ endfunction
 
 " Custom command for prettify jsons
 command PrettifyJson %!python -m json.tool 
+
+" Don't hide quotes and commands (e.g. in Json files)
+set conceallevel=0
