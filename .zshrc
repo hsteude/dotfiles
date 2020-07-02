@@ -126,3 +126,5 @@ unset __conda_setup
 #needs to be source at the end of this file!!
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8
