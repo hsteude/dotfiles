@@ -40,9 +40,6 @@ call plug#begin(g:plugged_home)
 
   " For go to definition
   Plug 'davidhalter/jedi-vim'
-  " auto-completion
-  "Plug 'shougo/deoplete.nvim', { 'do': ':updateremoteplugins' }
-  "Plug 'deoplete-plugins/deoplete-jedi'
   """"""Autcompletion end
 
   " file tree
@@ -95,6 +92,10 @@ set notagbsearch " :help does not work without this line
 set splitbelow "new windows below
 set termguicolors "um truecolors in iterm zu haebn
 set clipboard+=unnamedplus "um ins clipboard zu yanken
+
+"This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR>
+
 " modifying iron pluging (sending highlighted code to ipthon)
 lua << eof
 require("iron").core.set_config {
@@ -135,7 +136,7 @@ inoremap <c-c> <ESC>
 " make it fast
 let ncm2#popup_delay = 5
 let ncm2#complete_length = [[1, 1]]
-" Use new fuzzy based matches
+"" Use new fuzzy based matches
 let g:ncm2#matcher = 'substrfuzzy'
 
 " Disable Jedi-vim autocompletion and enable call-signatures options
@@ -145,7 +146,7 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#completions_command = ""
-let g:jedi#show_call_signatures = "1"
+let g:jedi#show_call_signatures = "2"
 "let g:deoplete#enable_at_startup = 1
 "set completeopt-=preview "no splits for completion options
 "
@@ -234,30 +235,12 @@ let g:indentLine_char = '│'
 "line breaks with indentation
 set breakindent
 
-""""" No tags, use jedi-vim for go to definition
-"""" TAGS
-" also look for tags in `libtags` in cwd
-" set tags=tags;/,libtags;/
-" Make ctags from all python libraries
-"command! -bar MakeLibTags !ctags -R --languages=Python --exclude='*.pyx' --exclude='*.pxd' -f libtags . `python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
-" Make ctags just from local project
-"command! -bar MakeTags !ctags -R --languages=Python --exclude='*.pyx' --exclude='*.pxd' -f tags .
-" Make both ctags for all python libraries and local project
-"command! MakeAllTags silent MakeTags|silent MakeLibTags|redraw!
-" On python file save, update local ctags
-"autocmd BufWritePost *.py silent MakeTags|exe ':redraw!'
-
 " for pydocstrings
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 let g:pydocstring_templates_dir = '~/.vim/plugged/vim-pydocstring/test/templates/numpy'
 
 
 """"""""LATEX"""""""
-
-" autocompletion
-"call deoplete#custom#var('omni', 'input_patterns', {
-      "\ 'tex': g:vimtex#re#deoplete
-      "\})
 " give me skim as default pdf viewer!!
 let g:vimtex_view_general_viewer
         \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
@@ -295,6 +278,4 @@ com! PrettifyXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minid
 " Don't hide quotes and commands (e.g. in Json files)
 set conceallevel=0
 set nospell
-
-
 
