@@ -123,8 +123,21 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Without this line conda shows a weird behaviour in tmux
+[[ -z $TMUX ]] || conda deactivate; conda activate base
+
+
 #needs to be source at the end of this file!!
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/henrik/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/henrik/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/henrik/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/henrik/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+

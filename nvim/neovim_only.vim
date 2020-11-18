@@ -46,7 +46,7 @@ call plug#begin(g:plugged_home)
   Plug 'scrooloose/nerdtree'
   " surround commands
   Plug 'tpope/vim-surround'
-  " better syntax highlighting
+  " fancy syntax highlighting
   Plug 'numirias/semshi'
   "Plug 'sheerun/vim-polyglot'
   " add iron to send code ipython repl
@@ -70,7 +70,7 @@ call plug#begin(g:plugged_home)
   " for latex
   Plug 'lervag/vimtex'
   " Python docstrings
-  Plug 'heavenshell/vim-pydocstring'
+  Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
   " R programming stuff
   Plug 'jalvesaq/Nvim-R'
   Plug 'gaalcaras/ncm-R'
@@ -238,16 +238,17 @@ set breakindent
 " for pydocstrings
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 let g:pydocstring_templates_dir = '~/.vim/plugged/vim-pydocstring/test/templates/numpy'
-
+"let g:pydocstring_formatter = 'numpy'
 
 """"""""LATEX"""""""
 " give me skim as default pdf viewer!!
 let g:vimtex_view_general_viewer
         \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
-
+let g:tex_flavor = 'latex'
 " This adds a callback hook that updates Skim after compilation
 let g:vimtex_compiler_callback_hooks = ['UpdateSkim']
+let g:vimtex_quickfix_open_on_warning = 0
 
 " Fancy custom function to update pdf after completion found here: https://jdhao.github.io/2019/03/26/nvim_latex_write_preview/
 function! UpdateSkim(status)

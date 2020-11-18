@@ -6,3 +6,5 @@ ipython
 pdbpp
 ibdb
 neovim-remote
+doq
+ipykernel

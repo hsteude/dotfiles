@@ -13,6 +13,9 @@ export PYTHONIOENCODING=UTF-8
 TEX_PATH=/Library/TeX/texbin
 export PATH=$PATH:$TEX_PATH
 
+# add malmo path
+export MALMO_XSD_PATH="/Users/henrik/Documents/hsu/game_environment/project-malmo/MALMO/MalmoPlatform/Schemas"
+
 #this is my promt... haha, ridiculous (i was bored...)
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
