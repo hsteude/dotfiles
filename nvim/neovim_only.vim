@@ -8,14 +8,13 @@ endif
 " Plugins List
 call plug#begin(g:plugged_home)
   " UI related
-  Plug 'chriskempson/base16-vim'
+  "Plug 'chriskempson/base16-vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   " color themes
-  Plug 'lifepillar/vim-solarized8'
+  Plug 'flazz/vim-colorschemes'
   Plug 'rakr/vim-one'
-  Plug 'arcticicestudio/nord-vim'
-  Plug 'ayu-theme/ayu-vim'
+  Plug 'kuntau/ayu-vim'
   Plug 'drewtempelmeyer/palenight.vim'
   " nice icons
   Plug 'ryanoasis/vim-devicons'
@@ -65,8 +64,6 @@ call plug#begin(g:plugged_home)
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
   " python autoimport
   Plug 'mgedmin/python-imports.vim'
-  " tag management (needed by python imports)
-  "Plug 'ludovicchabant/vim-gutentags'
   " for latex
   Plug 'lervag/vimtex'
   " Python docstrings
@@ -74,6 +71,8 @@ call plug#begin(g:plugged_home)
   " R programming stuff
   Plug 'jalvesaq/Nvim-R'
   Plug 'gaalcaras/ncm-R'
+  "Fancy csv viewing and probably more
+  Plug 'mechatroner/rainbow_csv'
 
 call plug#end()
 
@@ -95,6 +94,8 @@ set clipboard+=unnamedplus "um ins clipboard zu yanken
 
 "This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
+" greatest remap ever (lets me replace the highlaghted with previously yanked)
+vnoremap <leader>p "_dP
 
 " modifying iron pluging (sending highlighted code to ipthon)
 lua << eof
@@ -187,19 +188,29 @@ let NERDTreeShowHidden=1
 " some color cheme settings
 let g:onedark_hide_endofbuffer=1
 let g:onedark_terminal_italics=1
-set background=dark " or light
 let g:one_allow_italics = 1
 let g:palenight_terminal_italics=1
-"colorscheme solarized8_flat
-"let ayucolor="mirage"
-colorscheme palenight
 
+"colorscheme solarized8_flat
+"let ayucolor="light"
+"let ayucolor="mirage"
+let ayucolor="dark"
+let ayu_comment_italic=1 " enable italic for comments
+let ayu_string_italic=1  " enable italic for strings
+let ayu_type_italic=1    " enable italic for types
+let ayu_keyword_italic=1 " enable italic for keywords
+"colorscheme palenight
+"set background=dark " or light if you prefer the light version
+"let g:two_firewatch_italics=1
+colorscheme ayu
+
+"custom colors for syntax highlightin using semshi..
 function MyCustomHighlights()
     "hi semshiGlobal      ctermfg=red guifg=#ff0000
     hi semshiBuiltin          guifg=#C891E9
     hi semshiAttribute        guifg=#8ADDFF
-    hi semshiImported         guifg=#FFCB6A gui=bold
-    hi semshiSelected         guifg=#ffffff guibg=#81B1FF
+    hi semshiImported         guifg=#FFEE99 gui=bold
+    hi semshiSelected         guifg=#ffffff guibg=#5C6773
     hi semshiLocal            guifg=#81B1FF
 endfunction
 autocmd FileType python call MyCustomHighlights()
@@ -279,4 +290,5 @@ com! PrettifyXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minid
 " Don't hide quotes and commands (e.g. in Json files)
 set conceallevel=0
 set nospell
+
 
