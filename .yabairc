@@ -2,14 +2,14 @@
 
 # ====== Variables =============================
 
-gaps_top="4"
-gaps_bottom="4"
-gaps_left="4"
-gaps_right="4"
-gaps_inner="4"
+gaps_top="1"
+gaps_bottom="1"
+gaps_left="2"
+gaps_right="2"
+gaps_inner="2"
 
 normal_border_color="010101"
-focused_border_color="808080"
+focused_border_color="ece02c"
 preselect_border_color="2d74da"
 
 # ====== Tiling settings =======================

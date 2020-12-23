@@ -60,6 +60,11 @@ shift + alt - y : yabai -m space --mirror y-axis
 alt - f         : yabai -m window --toggle zoom-fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
 
+
+# Move between spaces
+shift + lctrl + alt - l: yabai -m space --focus next
+shift + lctrl + alt - h: yabai -m space --focus prev
+
 # Restart Yabai
 shift + lctrl + alt - r : 
     /usr/bin/env osascript <<< \
