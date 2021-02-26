@@ -59,6 +59,14 @@ source ~/.zshrc
 pip install -r ~/dotfiles/nvim/requirements.txt
 ```
 
+Install nerd fonts to make NerdTree pretty (maybe also download jetbrain mono from jetbrain website and put it to ~/fonts)
+```shell
+cd
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hermit.zip
+cp ./Hurmit*.otf ~/.fonts
+fc-cache -fv
+```
+
 
 # Install on ec2 ami (pretty old, i guess this needs to be updated, if in doubt use debian/ubunte or similar)
 ```shell
