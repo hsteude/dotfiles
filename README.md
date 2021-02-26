@@ -4,7 +4,7 @@ Mostly for python development and some tex stuff. I use zsh as shell and nvim as
 
 ## Installation
 
-The steps below should work on a fresh debian system
+The steps below should work on a fresh debian like system
 
 If required:
 ```shell
@@ -15,7 +15,7 @@ sudo apt-file update
 
 Install necessary cmd tools
 ```shell
-sudo apt-get install ripgrep neovim fzy git wget curl zsh gcc ctags cowsay fortune lua5.3 -y
+sudo apt-get install ripgrep neovim fzy git wget curl zsh gcc cowsay fortune -y
 ln -s /usr/games/cowsay /usr/bin/cowsay
 ln -s /usr/games/fortune /usr/bin/fortune
 cd; git clone https://github.com/hsteude/dotfiles.git
@@ -41,7 +41,15 @@ nvim +'UpdateRemotePlugins' +qa
 
 Install ohmzsh
 ```shell
+# download ohmyzh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# geht syntax highlighting tool
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+
+# source zshrc
+source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
 
 Install python requirements
@@ -52,7 +60,7 @@ pip install -r ~/dotfiles/nvim/requirements.txt
 ```
 
 
-# Install on ec2 ami
+# Install on ec2 ami (pretty old, i guess this needs to be updated, if in doubt use debian/ubunte or similar)
 ```shell
 sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
 sudo yum install tmux tree ripgrep gcc git wget zsh cowsay fortune-mod.x86_64 -y

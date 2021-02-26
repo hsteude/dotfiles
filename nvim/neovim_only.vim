@@ -1,4 +1,4 @@
- " Specify plug in manager
+" Specify plug in manager
 if has('win32') || has('win64')
   let g:plugged_home = '~/AppData/Local/nvim/plugged'
 else
@@ -8,15 +8,14 @@ endif
 " Plugins List
 call plug#begin(g:plugged_home)
   " UI related
-  Plug 'chriskempson/base16-vim'
+  "Plug 'chriskempson/base16-vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   " color themes
-  Plug 'lifepillar/vim-solarized8'
-  Plug 'rakr/vim-one'
-  Plug 'arcticicestudio/nord-vim'
-  Plug 'ayu-theme/ayu-vim'
-  Plug 'drewtempelmeyer/palenight.vim'
+  "Plug 'flazz/vim-colorschemes'
+  "Plug 'rakr/vim-one'
+  Plug 'kuntau/ayu-vim'
+  "Plug 'drewtempelmeyer/palenight.vim'
   " nice icons
   Plug 'ryanoasis/vim-devicons'
   " better visual guide (indentation level lines)
@@ -29,7 +28,7 @@ call plug#begin(g:plugged_home)
   Plug 'roxma/nvim-yarp'
   Plug 'ncm2/ncm2'
   " Fast python completion (use ncm2 if you want type info or snippet support)
-  Plug 'HansPinckaers/ncm2-jedi'
+  "Plug 'HansPinckaers/ncm2-jedi'
   " Words in buffer completion
   Plug 'ncm2/ncm2-bufword'
   " Filepath completion
@@ -46,11 +45,11 @@ call plug#begin(g:plugged_home)
   Plug 'scrooloose/nerdtree'
   " surround commands
   Plug 'tpope/vim-surround'
-  " better syntax highlighting
+  " fancy syntax highlighting
   Plug 'numirias/semshi'
-  "Plug 'sheerun/vim-polyglot'
+  Plug 'sheerun/vim-polyglot'
   " add iron to send code ipython repl
-  Plug 'Vigemus/iron.nvim'
+  "Plug 'Vigemus/iron.nvim'
   " commenting and uncomenting (cc: comment, cu: uncomment)
   Plug 'scrooloose/nerdcommenter'
   " autoformat (uses yapf installed with pip)
@@ -64,18 +63,20 @@ call plug#begin(g:plugged_home)
   " markdown preview
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
   " python autoimport
-  Plug 'mgedmin/python-imports.vim'
-  " tag management (needed by python imports)
-  "Plug 'ludovicchabant/vim-gutentags'
+  "Plug 'mgedmin/python-imports.vim'
   " for latex
   Plug 'lervag/vimtex'
   " Python docstrings
-  Plug 'heavenshell/vim-pydocstring'
+  Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
   " R programming stuff
   Plug 'jalvesaq/Nvim-R'
   Plug 'gaalcaras/ncm-R'
+  "Fancy csv viewing and probably more
+  Plug 'mechatroner/rainbow_csv'
 
 call plug#end()
+
+
 
 " general settings (independent of plugins)
 filetype plugin indent on
@@ -95,16 +96,18 @@ set clipboard+=unnamedplus "um ins clipboard zu yanken
 
 "This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
+" greatest remap ever (lets me replace the highlaghted with previously yanked)
+vnoremap <leader>p "_dP
 
 " modifying iron pluging (sending highlighted code to ipthon)
-lua << eof
-require("iron").core.set_config {
-    repl_open_cmd = 'below 10 split',
-    preferred = {
-        python = "ipython"
-    }
-}
-eof
+"lua << eof
+"require("iron").core.set_config {
+    "repl_open_cmd = 'below 10 split',
+    "preferred = {
+        "python = "ipython"
+    "}
+"}
+"eof
 
 "run :Neomake frequently if machine on power supply
 function! MyOnBattery()
@@ -185,21 +188,33 @@ nnoremap <C-p> :FuzzyOpen<CR>
 let NERDTreeShowHidden=1
 
 " some color cheme settings
-let g:onedark_hide_endofbuffer=1
-let g:onedark_terminal_italics=1
-set background=dark " or light
-let g:one_allow_italics = 1
-let g:palenight_terminal_italics=1
-"colorscheme solarized8_flat
-"let ayucolor="mirage"
-colorscheme palenight
+"let g:onedark_hide_endofbuffer=1
+"let g:onedark_terminal_italics=1
+"let g:one_allow_italics = 1
+"let g:palenight_terminal_italics=1
 
+colorscheme ayu
+"colorscheme solarized8_flat
+"let ayucolor="light"
+"let ayucolor="mirage"
+let ayucolor="dark"
+let ayu_comment_italic=1 " enable italic for comments
+let ayu_string_italic=1  " enable italic for strings
+let ayu_type_italic=1    " enable italic for types
+let ayu_keyword_italic=1 " enable italic for keywords
+
+colorscheme ayu
+"colorscheme palenight
+"set background=dark " or light if you prefer the light version
+"let g:two_firewatch_italics=1
+
+"custom colors for syntax highlightin using semshi..
 function MyCustomHighlights()
     "hi semshiGlobal      ctermfg=red guifg=#ff0000
     hi semshiBuiltin          guifg=#C891E9
     hi semshiAttribute        guifg=#8ADDFF
-    hi semshiImported         guifg=#FFCB6A gui=bold
-    hi semshiSelected         guifg=#ffffff guibg=#81B1FF
+    hi semshiImported         guifg=#FFEE99 gui=bold
+    hi semshiSelected         guifg=#ffffff guibg=#5C6773
     hi semshiLocal            guifg=#81B1FF
 endfunction
 autocmd FileType python call MyCustomHighlights()
@@ -229,7 +244,7 @@ map <Space> :noh<cr>
 set autoread
 au FocusGained * :checktime
 
-" More beautiful indentation line
+" More awesome indentation line
 let g:indentLine_char = '│'
 
 "line breaks with indentation
@@ -238,16 +253,17 @@ set breakindent
 " for pydocstrings
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 let g:pydocstring_templates_dir = '~/.vim/plugged/vim-pydocstring/test/templates/numpy'
-
+"let g:pydocstring_formatter = 'numpy'
 
 """"""""LATEX"""""""
 " give me skim as default pdf viewer!!
 let g:vimtex_view_general_viewer
         \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
-
+let g:tex_flavor = 'latex'
 " This adds a callback hook that updates Skim after compilation
 let g:vimtex_compiler_callback_hooks = ['UpdateSkim']
+let g:vimtex_quickfix_open_on_warning = 0
 
 " Fancy custom function to update pdf after completion found here: https://jdhao.github.io/2019/03/26/nvim_latex_write_preview/
 function! UpdateSkim(status)
