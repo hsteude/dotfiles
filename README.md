@@ -39,7 +39,7 @@ nvim +'PlugInstall' +qa
 nvim +'UpdateRemotePlugins' +qa
 ```
 
-Install ohmzsh
+Install ohmyzsh
 ```shell
 # download ohmyzh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
