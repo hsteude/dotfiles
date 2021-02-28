@@ -140,3 +140,5 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # ipbd instead of pdb by default breakpoint
 export PYTHONBREAKPOINT=ipdb.set_trace
 
+# remap caps lock key
+setxkbmap -option caps:escape

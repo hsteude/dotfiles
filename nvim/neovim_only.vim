@@ -99,16 +99,6 @@ nnoremap <CR> :noh<CR><CR>
 " greatest remap ever (lets me replace the highlaghted with previously yanked)
 vnoremap <leader>p "_dP
 
-" modifying iron pluging (sending highlighted code to ipthon)
-"lua << eof
-"require("iron").core.set_config {
-    "repl_open_cmd = 'below 10 split',
-    "preferred = {
-        "python = "ipython"
-    "}
-"}
-"eof
-
 "run :Neomake frequently if machine on power supply
 function! MyOnBattery()
   if has('macunix')
@@ -187,16 +177,7 @@ nnoremap <C-p> :FuzzyOpen<CR>
 "show hidden files in nerdtree
 let NERDTreeShowHidden=1
 
-" some color cheme settings
-"let g:onedark_hide_endofbuffer=1
-"let g:onedark_terminal_italics=1
-"let g:one_allow_italics = 1
-"let g:palenight_terminal_italics=1
-
 colorscheme ayu
-"colorscheme solarized8_flat
-"let ayucolor="light"
-"let ayucolor="mirage"
 let ayucolor="dark"
 let ayu_comment_italic=1 " enable italic for comments
 let ayu_string_italic=1  " enable italic for strings
@@ -204,9 +185,6 @@ let ayu_type_italic=1    " enable italic for types
 let ayu_keyword_italic=1 " enable italic for keywords
 
 colorscheme ayu
-"colorscheme palenight
-"set background=dark " or light if you prefer the light version
-"let g:two_firewatch_italics=1
 
 "custom colors for syntax highlightin using semshi..
 function MyCustomHighlights()
@@ -255,36 +233,8 @@ autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 let g:pydocstring_templates_dir = '~/.vim/plugged/vim-pydocstring/test/templates/numpy'
 "let g:pydocstring_formatter = 'numpy'
 
-""""""""LATEX"""""""
-" give me skim as default pdf viewer!!
-let g:vimtex_view_general_viewer
-        \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-let g:vimtex_view_general_options = '-r @line @pdf @tex'
 let g:tex_flavor = 'latex'
-" This adds a callback hook that updates Skim after compilation
-let g:vimtex_compiler_callback_hooks = ['UpdateSkim']
-let g:vimtex_quickfix_open_on_warning = 0
-
-" Fancy custom function to update pdf after completion found here: https://jdhao.github.io/2019/03/26/nvim_latex_write_preview/
-function! UpdateSkim(status)
-    if !a:status | return | endif
-
-    let l:out = b:vimtex.out()
-    let l:tex = expand('%:p')
-    let l:cmd = [g:vimtex_view_general_viewer, '-r']
-
-    if !empty(system('pgrep Skim'))
-        call extend(l:cmd, ['-g'])
-    endif
-
-    if has('nvim')
-        call jobstart(l:cmd + [line('.'), l:out, l:tex])
-    elseif has('job')
-        call job_start(l:cmd + [line('.'), l:out, l:tex])
-    else
-        call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
-    endif
-endfunction
+let g:vimtex_view_general_viewer = '/usr/bin/zathura'
 
 " Custom command for prettify jsons
 command PrettifyJson %!python -m json.tool 

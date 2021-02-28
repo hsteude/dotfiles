@@ -126,6 +126,8 @@ fortune | cowsay
 
 bindkey -v
 
+# remap caps lock key
+setxkbmap -option caps:escape
 
 #needs to be source at the end of this file!!
 #source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

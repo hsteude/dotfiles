@@ -68,6 +68,13 @@ fc-cache -fv
 ```
 
 
+Install TexLive is neede:
+```shell
+sudo apt-get install texlive-full
+sudo apt install zathura
+```
+
+
 # Install on ec2 ami (pretty old, i guess this needs to be updated, if in doubt use debian/ubunte or similar)
 ```shell
 sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
