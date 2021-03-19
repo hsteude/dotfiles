@@ -15,10 +15,15 @@ sudo apt-file update
 
 Install necessary cmd tools
 ```shell
-sudo apt-get install ripgrep neovim fzy git wget curl zsh gcc cowsay fortune -y
+sudo apt bat install ripgrep fzy git neovim wget curl zsh gcc cowsay fortune -y
 ln -s /usr/games/cowsay /usr/bin/cowsay
 ln -s /usr/games/fortune /usr/bin/fortune
 cd; git clone https://github.com/hsteude/dotfiles.git
+```
+
+Install / update nvim nightly
+```shell
+bash ~/dotfiles/update_nvim_nightly.sh
 ```
 
 Install Python via miniconda
@@ -68,10 +73,25 @@ fc-cache -fv
 ```
 
 
-Install TexLive is neede:
+Install TexLive if neede:
 ```shell
 sudo apt-get install texlive-full
 sudo apt install zathura
+```
+
+mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat ~/bin/bat
+
+
+# Other notes on my setup(
+For the Apple Magic Mouse I use it takes a special driver
+```shell
+cd ~/bin
+sudo apt install dkms
+git clone https://github.com/RicardoEPRodrigues/Linux-Magic-Trackpad-2-Driver.git
+cd Linux-Magic-Trackpad-2-Driver
+chmod u+x install.sh
+sudo ./install.sh
 ```
 
 
