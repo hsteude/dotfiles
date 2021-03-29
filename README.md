@@ -4,27 +4,19 @@ Mostly for python development and some tex stuff. I use zsh as shell and nvim as
 
 ## Installation
 
-The steps below should work on a fresh debian system
-
-If required:
-```shell
-sudo apt-get update
-sudo apt-get install apt-file -y
-sudo apt-file update
-```
-
 Install necessary cmd tools
 ```shell
-sudo apt-get install ripgrep neovim fzy git wget curl zsh gcc ctags cowsay fortune lua5.3 -y
-ln -s /usr/games/cowsay /usr/bin/cowsay
-ln -s /usr/games/fortune /usr/bin/fortune
+brew install ripgrep neovim fzy git wget curl zsh gcc ctags cowsay fortune lua bat tmux
+brew install --cask iterm2 firefow
 cd; git clone https://github.com/hsteude/dotfiles.git
+for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
+git checkout mac_os
 ```
 
 Install Python via miniconda
 ```shell
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-MacOSX-x86_64.sh
+bash Miniconda3-py39_4.9.2-MacOSX-x86_64.sh
 ```
 Create symlinks
 ```shell script
@@ -42,6 +34,13 @@ nvim +'UpdateRemotePlugins' +qa
 Install ohmzsh
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# get syntax highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+
+# source zshrc
+source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
 
 Install python requirements

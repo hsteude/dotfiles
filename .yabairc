@@ -2,15 +2,15 @@
 
 # ====== Variables =============================
 
-gaps_top="1"
-gaps_bottom="1"
-gaps_left="2"
-gaps_right="2"
-gaps_inner="2"
+gaps_top="4"
+gaps_bottom="4"
+gaps_left="4"
+gaps_right="4"
+gaps_inner="4"
 
-normal_border_color="010101"
-focused_border_color="ece02c"
-preselect_border_color="2d74da"
+#normal_border_color="000000"
+#focused_border_color="000000"
+#preselect_border_color="000000"
 
 # ====== Tiling settings =======================
 
@@ -40,11 +40,11 @@ yabai -m config auto_balance                off
 
 # ====== Border settings =======================
 
-yabai -m config window_border               on
-yabai -m config window_border_width         2
-yabai -m config active_window_border_color  "0xE0${focused_border_color}"
-yabai -m config insert_window_border_color  "0xE0${preselect_border_color}"
-yabai -m config normal_window_border_color  "0x00${normal_border_color}"
+yabai -m config window_border               off
+#yabai -m config window_border_width         2
+#yabai -m config active_window_border_color  "0xE0${focused_border_color}"
+#yabai -m config insert_window_border_color  "0xE0${preselect_border_color}"
+#yabai -m config normal_window_border_color  "0x00${normal_border_color}"
 
 # ====== List of rules =========================
 

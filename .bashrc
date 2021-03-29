@@ -37,6 +37,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# add tex to path
+export PATH ="/Library/TeX/texbin:$PATH"
+
 # very important:
 fortune | cowsay
 

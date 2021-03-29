@@ -251,6 +251,7 @@ autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 let g:pydocstring_templates_dir = '~/.vim/plugged/vim-pydocstring/test/templates/numpy'
 "let g:pydocstring_formatter = 'numpy'
 
+
 """"""""LATEX"""""""
 " give me skim as default pdf viewer!!
 let g:vimtex_view_general_viewer
@@ -281,6 +282,7 @@ function! UpdateSkim(status)
         call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
     endif
 endfunction
+
 
 " Custom command for prettify jsons
 command PrettifyJson %!python -m json.tool 
