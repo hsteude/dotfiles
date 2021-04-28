@@ -1,11 +1,10 @@
 #!/bin/bash
 ln -s ~/dotfiles/.aliases ~/.aliases
-rm ~/.bash_profile
 ln -s ~/dotfiles/.bash_profile ~/.bash_profile
 rm ~/.bashrc
 ln -s ~/dotfiles/.bashrc ~/.bashrc
 mkdir .config/
-ln -s ~/dotfiles/nvim ~/.config/nvim
+ln -s ~/dotfiles/nvim ~/.config/
 ln -s ~/dotfiles/.pdbrc.py ~/.pbdrc.py
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.zshrc ~/.zshrc

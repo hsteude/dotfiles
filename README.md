@@ -16,8 +16,8 @@ sudo apt-file update
 Install necessary cmd tools
 ```shell
 sudo apt bat install ripgrep fzy git neovim wget curl zsh gcc cowsay fortune -y
-ln -s /usr/games/cowsay /usr/bin/cowsay
-ln -s /usr/games/fortune /usr/bin/fortune
+sudo ln -s /usr/games/cowsay /usr/bin/cowsay
+sudo ln -s /usr/games/fortune /usr/bin/fortune
 cd; git clone https://github.com/hsteude/dotfiles.git
 ```
 
@@ -68,6 +68,8 @@ Install nerd fonts to make NerdTree pretty (maybe also download jetbrain mono fr
 ```shell
 cd
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hermit.zip
+unzip Hermit.zip
+mkdir ~/.fonts 
 cp ./Hurmit*.otf ~/.fonts
 fc-cache -fv
 ```
