@@ -54,7 +54,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case CAP_A_UMLAUT_:
         if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_LALT("u")"A");
+            SEND_STRING(SS_RALT("A")"\"");
         } else {
             // when keycode QMKURL is released
         }
@@ -62,7 +62,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case SMALL_O_UMLAUT_:
         if (record->event.pressed) {
             // when keycode QMKBEST is pressed
-            SEND_STRING(SS_LALT("u")"o");
+            SEND_STRING(SS_RALT("o")"\"");
         } else {
             // when keycode QMKBEST is released
         }
@@ -70,7 +70,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case CAP_O_UMLAUT_:
         if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_LALT("u")"O");
+            SEND_STRING(SS_RALT("O")"\"");
         } else {
             // when keycode QMKURL is released
         }
@@ -78,7 +78,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case SMALL_U_UMLAUT_:
         if (record->event.pressed) {
             // when keycode QMKBEST is pressed
-            SEND_STRING(SS_LALT("u")"u");
+            SEND_STRING(SS_LALT("u")"\"");
         } else {
             // when keycode QMKBEST is released
         }
@@ -86,7 +86,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case CAP_U_UMLAUT_:
         if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_LALT("u")"U");
+            SEND_STRING(SS_LALT("U")"\"");
         } else {
             // when keycode QMKURL is released
         }
@@ -94,7 +94,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ESSZETT_:
         if (record->event.pressed) {
             // when keycode QMKBEST is pressed
-            SEND_STRING(SS_LALT("s"));
+            SEND_STRING(SS_RALT("s")"s");
         } else {
             // when keycode QMKBEST is released
         }
