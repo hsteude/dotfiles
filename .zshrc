@@ -141,3 +141,4 @@ if [ -f ~/.aliases ]; then
 fi
 
 source /home/henrik/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+PATH="$HOME/.local/bin:$PATH"

@@ -10,3 +10,4 @@ ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+ln -s ~/dotfiles/keymap.c ./keyboards/planck/keymaps/hsteude/keymap.c

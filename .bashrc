@@ -142,3 +142,4 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 
 # remap caps lock key
 setxkbmap -option caps:escape
+PATH="$HOME/.local/bin:$PATH"
