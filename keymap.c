@@ -45,7 +45,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case SMALL_A_UMLAUT_:
         if (record->event.pressed) {
             // when keycode QMKBEST is pressed
-            SEND_STRING(SS_RALT("a")"'");
+            SEND_STRING(SS_RALT("a")"\"");
         } else {
             // when keycode QMKBEST is released
         }
@@ -78,7 +78,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case SMALL_U_UMLAUT_:
         if (record->event.pressed) {
             // when keycode QMKBEST is pressed
-            SEND_STRING(SS_LALT("u")"\"");
+            SEND_STRING(SS_RALT("u")"\"");
         } else {
             // when keycode QMKBEST is released
         }
@@ -86,7 +86,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case CAP_U_UMLAUT_:
         if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_LALT("U")"\"");
+            SEND_STRING(SS_RALT("U")"\"");
         } else {
             // when keycode QMKURL is released
         }
