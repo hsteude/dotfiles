@@ -6,3 +6,4 @@ ipython
 pdbpp
 ibdb
 neovim-remote
+jedi==0.17.2

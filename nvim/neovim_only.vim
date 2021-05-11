@@ -28,7 +28,7 @@ call plug#begin(g:plugged_home)
   Plug 'roxma/nvim-yarp'
   Plug 'ncm2/ncm2'
   " Fast python completion (use ncm2 if you want type info or snippet support)
-  "Plug 'HansPinckaers/ncm2-jedi'
+  Plug 'HansPinckaers/ncm2-jedi'
   " Words in buffer completion
   Plug 'ncm2/ncm2-bufword'
   " Filepath completion

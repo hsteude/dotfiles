@@ -15,9 +15,9 @@ sudo apt-file update
 
 Install necessary cmd tools
 ```shell
-sudo apt bat install ripgrep fzy git neovim wget curl zsh gcc cowsay fortune -y
-ln -s /usr/games/cowsay /usr/bin/cowsay
-ln -s /usr/games/fortune /usr/bin/fortune
+sudo apt install bat ripgrep fzy git neovim wget curl zsh gcc cowsay fortune -y
+sudo ln -s /usr/games/cowsay /usr/bin/cowsay
+sudo ln -s /usr/games/fortune /usr/bin/fortune
 cd; git clone https://github.com/hsteude/dotfiles.git
 ```
 
