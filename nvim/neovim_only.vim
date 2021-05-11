@@ -258,8 +258,9 @@ command PrettifyJson %!python -m json.tool
 com! PrettifyXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
 
 " Don't hide quotes and commands (e.g. in Json files)
-set conceallevel=0
+"set conceallevel=0
 set nospell
+let g:vimtex_syntax_conceal_default = 0
 
 " put back in when nvim 0.5 is released
 " Telescope stuff
