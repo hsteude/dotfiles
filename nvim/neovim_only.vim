@@ -121,7 +121,8 @@ endif
 "
 "spell checking
 set spell spelllang=en
-set spellfile=~/dotfiles/nvim/spell/en.utf-8.add
+map <F8>  :setlocal spell spelllang=de <return>
+map <F9>  :setlocal spell spelllang=en <return>
 syntax on
 syntax enable
 
