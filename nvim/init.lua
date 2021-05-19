@@ -295,9 +295,18 @@ g.gruvbox_contrast = 'medium'
 --------------------------
 -- neomake for autopep8 
 --------------------------
-g.neoformat_enabled_python = {'autopep9'}
+g.neoformat_enabled_python = {'autopep8'}
 
+--------------------------
+-- NERDTree
+--------------------------
 g.NERDTreeShowHidden = 1
+
+--------------------------
+-- Vim Move
+--------------------------
+--g.move_map_keys = 0
+--g.move_key_modifier = "T"
 
 ------------------------
 -- airline (status bar)
