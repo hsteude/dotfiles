@@ -40,7 +40,6 @@ end
 -------------
 -- Options --
 -------------
-
 local global_opts = {
     encoding      = 'utf-8',
     termguicolors = true,
@@ -95,7 +94,7 @@ end
 
 for k, v in pairs(buf_opts) do
 	vim.o[k] = v
-    relativenumber= true
+    relativenumber = true
 	vim.bo[k] = v
 end
 
@@ -126,7 +125,6 @@ local plugins = {
 
     -- proper folding for python
 	'tmhedberg/SimpylFold',
-
 
     -- Markdown preview
       'iamcco/markdown-preview.nvim',
@@ -178,14 +176,11 @@ local plugins = {
     -- Shows register overview
 	'gennaro-tedesco/nvim-peekup',
 
-    -- Move current selection up (down) with A-k (A-j)
+    -- Move current selection up (down) with Alt-k (Alt-j)
 	'matze/vim-move',
 
     --Cchange/add/delete `sourroundings`
 	'tpope/vim-surround',
-
-    -- pep8 autoformatting with neomake
-    'neomake/neomake',
 
     -- Better spell checking
 	'vigoux/LanguageTool.nvim',
@@ -209,18 +204,22 @@ end
 
 vim.fn['plug#end']()
 
+--------------------------
+-- gruvbox (color scheme)
+--------------------------
+g.gruvbox_italic = 1
+g.gruvbox_contrast_light = 1
+
 ---------
 -- Colors
 ---------
-
 local theme = 'gruvbox'
 vim.api.nvim_command('colorscheme ' .. theme)
 
 ---------------
 -- Autocommands
 ---------------
-
--- Save cursor position, folds etc on leaving a buffer
+--TODO: ??
 vim.cmd('autocmd BufWinLeave * silent! mkview')
 -- and reload on entering it
 vim.cmd('autocmd BufWinEnter * silent! loadview')
@@ -228,21 +227,23 @@ vim.cmd('autocmd BufWinEnter * silent! loadview')
 -----------
 -- Mappings
 -----------
-
-U.map('n', 'Q', 'gq}')  -- don't use ex mode, use Q for formatting 
+-- don't use ex mode, use Q for formatting (wrapping text in new lines)
+U.map('n', 'Q', 'gq}')
+-- mapping to write file that needs sudo privileges
 U.map('n', 'w!!', '%!sudo tee > /dev/null %')
-U.map('n', 'Y', 'y$')  -- make Y work as C or D,
+-- make Y work as C or D,
+U.map('n', 'Y', 'y$')
 -- make ctrl-l remove highlights and re-apply syntax highlighting
 U.map('n', '<C-l>', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>')
 -- switch to next/previous buffer with Tab/shift+Tab
 U.map('n', '<Tab>', ':bnext<CR>')
 U.map('n', '<S-Tab>', ':bprevious<CR>')
-
+-- shortcut to replace highlighted section with paste register content
+U.map("v", "<leader>p", "_dP")
 
 ------------
 -- Telescope
 ------------
-
 local finders = require "telescope.builtin"
 local actions = require "telescope.actions"
 local sorters = require "telescope.sorters"
@@ -284,14 +285,6 @@ U.map("n", "<leader>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>"
 U.map("n", "<leader>fb", "<CMD>lua require('telescope.builtin').buffers()<CR>")
 U.map("n", "<leader>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>")
 
-
---------------------------
--- gruvbox (color scheme)
---------------------------
-g.gruxbox_italic = 1
-g.gruvbox_contrast = 'medium'
-
-
 --------------------------
 -- neomake for autopep8 
 --------------------------
@@ -310,12 +303,17 @@ g.NERDTreeShowHidden = 1
 
 ------------------------
 -- airline (status bar)
-------------------------
 g.airline_powerline_fonts = 1
 g["airline#extensions#tabline#enabled"] = 1
 g["airline#extensions#tabline#fnamemod"] = ':t'
-g.airline_theme = 'gruvbox'
+g.airline_theme = theme
 
+------------------------
+-- behaviour of the peekup window on keystroke
+------------------------
+require('nvim-peekup.config').on_keystroke["delay"] = '100ms'
+require('nvim-peekup.config').on_keystroke["autoclose"] = true
+require('nvim-peekup.config').on_keystroke["paste_reg"] = '"'
 
 ------------
 -- lspconfig
