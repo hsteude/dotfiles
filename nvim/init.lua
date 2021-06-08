@@ -116,6 +116,7 @@ local plugins = {
 
     -- colorschemes
 	'morhetz/gruvbox',
+    'NLKNguyen/papercolor-theme',
 
     -- autoformatiing with autopep8 
     'sbdchd/neoformat',
@@ -127,7 +128,7 @@ local plugins = {
 	'tmhedberg/SimpylFold',
 
     -- Markdown preview
-      'iamcco/markdown-preview.nvim',
+    'iamcco/markdown-preview.nvim',
 
     -- text objects for indented languages (python)
 	--'tweekmonster/braceless.vim',
@@ -214,6 +215,9 @@ g.gruvbox_contrast_light = 1
 -- Colors
 ---------
 local theme = 'gruvbox'
+--local theme = 'PaperColor'
+local airline_theme = 'papercolor'
+local airline_theme = 'gruvbox'
 vim.api.nvim_command('colorscheme ' .. theme)
 
 ---------------
@@ -240,7 +244,8 @@ U.map('n', '<Tab>', ':bnext<CR>')
 U.map('n', '<S-Tab>', ':bprevious<CR>')
 -- shortcut to replace highlighted section with paste register content
 U.map("v", "<leader>p", "_dP")
-
+-- nerdtree shortcut
+U.map("n", "N", ":NERDTree<CR>")
 ------------
 -- Telescope
 ------------
@@ -304,9 +309,9 @@ g.NERDTreeShowHidden = 1
 ------------------------
 -- airline (status bar)
 g.airline_powerline_fonts = 1
-g["airline#extensions#tabline#enabled"] = 1
+g["airline#extensions#tabline#enabled"] = 0
 g["airline#extensions#tabline#fnamemod"] = ':t'
-g.airline_theme = theme
+g.airline_theme = airline_theme
 
 ------------------------
 -- behaviour of the peekup window on keystroke
