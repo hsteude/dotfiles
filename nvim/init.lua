@@ -249,6 +249,8 @@ U.map('n', '<S-Tab>', ':bprevious<CR>')
 U.map("v", "<leader>p", "_dP")
 -- nerdtree shortcut
 U.map("n", "N", ":NERDTree<CR>")
+-- insert breakpoint in python
+U.map("n", "<leader>b", "obreakpoint()<ESC>")
 ------------
 -- Telescope
 ------------
