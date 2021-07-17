@@ -140,8 +140,8 @@ local plugins = {
 	'scrooloose/nerdcommenter',
 
     -- prettier status line
-	'vim-airline/vim-airline',
-	'vim-airline/vim-airline-themes',
+    'vim-airline/vim-airline',
+    'vim-airline/vim-airline-themes',
 
     -- LaTeX plugin
     'lervag/vimtex',
@@ -210,6 +210,9 @@ vim.fn['plug#end']()
 --------------------------
 g.gruvbox_italic = 1
 g.gruvbox_contrast_light = 1
+
+
+g.languagetool_server_jar = '/usr/local/bin/LanguageTool-5.3/languagetool-server.jar'
 
 ---------
 -- Colors
