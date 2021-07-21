@@ -64,7 +64,7 @@ local global_opts = {
     incsearch     = true,
     backspace     = 'indent,eol,start',
     completeopt   = 'menuone,noselect',
-    formatoptions = 'jcroql',  -- see `help fo-table` for meaning
+    formatoptions = 'j,r,o,q'  -- see `help fo-table` for meaning
 }
 
 local win_opts = {
@@ -189,6 +189,9 @@ local plugins = {
     -- NeoVim LSP config
     'neovim/nvim-lspconfig',
     'hrsh7th/nvim-compe',
+
+    -- Zen Mode
+    'folke/zen-mode.nvim'
 }
 
 
@@ -231,7 +234,7 @@ vim.cmd('autocmd BufWinLeave * silent! mkview')
 -- and reload on entering it
 vim.cmd('autocmd BufWinEnter * silent! loadview')
 
------------
+----------
 -- Mappings
 -----------
 -- don't use ex mode, use Q for formatting (wrapping text in new lines)
@@ -239,7 +242,8 @@ U.map('n', 'Q', 'gq}')
 -- mapping to write file that needs sudo privileges
 U.map('n', 'w!!', '%!sudo tee > /dev/null %')
 -- make Y work as C or D,
-U.map('n', 'Y', 'y$')
+--U.map('n', 'Y', 'y$')
+--Uap('v', 'Y', ':"<,">,let @+ = @"<CR>')
 -- make ctrl-l remove highlights and re-apply syntax highlighting
 U.map('n', '<C-l>', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>')
 -- switch to next/previous buffer with Tab/shift+Tab
@@ -251,6 +255,9 @@ U.map("v", "<leader>p", "_dP")
 U.map("n", "N", ":NERDTree<CR>")
 -- insert breakpoint in python
 U.map("n", "<leader>b", "obreakpoint()<ESC>")
+-- toggle zen mode with leader z
+U.map("n", "<leader>z", ":ZenMode<CR>")
+
 ------------
 -- Telescope
 ------------
@@ -295,6 +302,58 @@ U.map("n", "<leader>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>"
 U.map("n", "<leader>fb", "<CMD>lua require('telescope.builtin').buffers()<CR>")
 U.map("n", "<leader>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>")
 
+
+--------------------------
+-- Zen Mode 
+--------------------------
+require("zen-mode").setup(
+{
+    window = {
+    backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+    -- height and width can be:
+    -- * an absolute number of cells when > 1
+    -- * a percentage of the width / height of the editor when <= 1
+    width = 120, -- width of the Zen window
+    height = 1, -- height of the Zen window
+    -- by default, no options are changed for the Zen window
+    -- uncomment any of the options below, or add other vim.wo options you want to apply
+    options = {
+       signcolumn = "no", -- disable signcolumn
+      -- number = false, -- disable number column
+      -- relativenumber = false, -- disable relative numbers
+      -- cursorline = false, -- disable cursorline
+      -- cursorcolumn = false, -- disable cursor column
+      -- foldcolumn = "0", -- disable fold column
+      -- list = false, -- disable whitespace characters
+    },
+  },
+  plugins = {
+    -- disable some global vim options (vim.o...)
+    -- comment the lines to not apply the options
+    options = {
+      enabled = true,
+      ruler = false, -- disables the ruler text in the cmd line area
+      showcmd = false, -- disables the command in the last line of the screen
+    },
+    twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+    gitsigns = { enabled = false }, -- disables git signs
+    tmux = { enabled = true }, -- disables the tmux statusline
+    -- this will change the font size on kitty when in zen mode
+    -- to make this work, you need to set the following kitty options:
+    -- - allow_remote_control socket-only
+    -- - listen_on unix:/tmp/kitty
+    kitty = {
+      enabled = false,
+      font = "+4", -- font size increment
+    },
+  },
+  -- callback where you can add custom code when the Zen window opens
+  on_open = function(win)
+  end,
+  -- callback where you can add custom code when the Zen window closes
+  on_close = function()
+  end}
+)
 --------------------------
 -- neomake for autopep8 
 --------------------------
@@ -314,7 +373,7 @@ g.NERDTreeShowHidden = 1
 ------------------------
 -- airline (status bar)
 g.airline_powerline_fonts = 1
-g["airline#extensions#tabline#enabled"] = 0
+g["airline#extensions#tabline#enabled"] = 1
 g["airline#extensions#tabline#fnamemod"] = ':t'
 g.airline_theme = airline_theme
 
