@@ -6,16 +6,15 @@ Mostly for python development and some tex stuff. I use zsh as shell and nvim as
 
 The steps below should work on a fresh debian like system
 
-If required:
+Lets go:
 ```shell
-sudo apt-get update
-sudo apt-get install apt-file -y
-sudo apt-file update
+sudo apt update
+sudo apt upgrade
 ```
 
 Install necessary cmd tools
 ```shell
-sudo apt bat install ripgrep fzy git neovim wget curl zsh gcc cowsay fortune -y
+sudo apt install ripgrep fzy git neovim wget curl zsh gcc cowsay fortune -y
 sudo ln -s /usr/games/cowsay /usr/bin/cowsay
 sudo ln -s /usr/games/fortune /usr/bin/fortune
 cd; git clone https://github.com/hsteude/dotfiles.git
@@ -57,12 +56,21 @@ echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> 
 source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
 
+Check all symlinks again! The process is a little messy here!
+
 Install python requirements
 ```shell
 source ~/.zshrc
 ~/miniconda3/bin/conda init zsh
 pip install -r ~/dotfiles/nvim/requirements.txt
 ```
+
+Install pyright as Python LSP (using npm)
+```shell
+sudo apt install npm
+sudo npm install --global pyright
+```
+
 
 Install nerd fonts to make NerdTree pretty (maybe also download jetbrain mono from jetbrain website and put it to ~/fonts)
 ```shell
@@ -75,7 +83,7 @@ fc-cache -fv
 ```
 
 
-Install TexLive if neede:
+Install TexLive if needed:
 ```shell
 sudo apt-get install texlive-full
 sudo apt install zathura
