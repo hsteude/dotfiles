@@ -1,12 +1,13 @@
 # dotfiles, dotfiles, dotfiles
 
-Mostly for python development and some tex stuff. I use zsh as shell and nvim as text editor.
+Mostly for python development and some tex stuff. I use zsh as shell and nneovim as text editor.
 
 ## Installation
 
-The steps below should work on a fresh debian like system
+The steps below should work on a fresh debian like system. However, it's still a
+little bumpy here and there. So be patient :)
 
-Lets go:
+Lets go and update all debian packages:
 ```shell
 sudo apt update
 sudo apt upgrade
@@ -30,10 +31,6 @@ Install Python via miniconda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
-Create symlinks
-```shell script
-bash ~/dotfiles/create_symlinks.sh
-```
 
 Install Vim Plug
 ```shell
@@ -56,13 +53,21 @@ echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> 
 source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
 
-Check all symlinks again! The process is a little messy here!
-
 Install python requirements
 ```shell
-source ~/.zshrc
-~/miniconda3/bin/conda init zsh
 pip install -r ~/dotfiles/nvim/requirements.txt
+```
+    
+Create an ipython profile
+```shell
+ipython profile create
+rm ~/.ipython/profile_default/ipython_config.py # remove default file
+ln -s ~/dotfiles/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+```
+
+Create symlinks
+```shell script
+bash ~/dotfiles/create_symlinks.sh
 ```
 
 Install pyright as Python LSP (using npm)

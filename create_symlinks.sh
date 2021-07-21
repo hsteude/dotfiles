@@ -10,7 +10,5 @@ ln -s ~/dotfiles/.pdbrc.py ~/.pbdrc.py
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/keymap.c ./keyboards/planck/keymaps/hsteude/keymap.c
-# run this one after creating a ipython config --> checking later
-ln -s ~/dotfiles/ipython_config.py ~/.ipython/profile_default/ipython_config.py
-#this file already existed.. probably cause i cloned using the ssh key...
+#the git config already existed.. probably cause i cloned using the ssh key...
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
