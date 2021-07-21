@@ -71,6 +71,12 @@ sudo apt install npm
 sudo npm install --global pyright
 ```
 
+To get pyright and LSP to work I had to upgrade nodejs:
+```shell
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
 
 Install nerd fonts to make NerdTree pretty (maybe also download jetbrain mono from jetbrain website and put it to ~/fonts)
 ```shell
