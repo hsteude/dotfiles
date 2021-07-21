@@ -14,3 +14,6 @@ ln -s ~/dotfiles/.zshrc ~/.zshrc
 #ln -s ~/dotfiles/keymap.c ./keyboards/planck/keymaps/hsteude/keymap.c
 #the git config already existed.. probably cause i cloned using the ssh key...
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/dotfiles/.condarc ~/.condarc
+ln -s ~/dotfiles/own.zsh-theme ~/.oh-my-zsh/themes/own.zsh-theme
+
