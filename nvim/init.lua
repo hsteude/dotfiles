@@ -268,7 +268,7 @@ local sorters = require "telescope.sorters"
 require("telescope").setup(
     {
         defaults = {
-            prompt_position = "top",
+            --prompt_position = "top",
             prompt_prefix = " ❯ ",
             sorting_strategy = "ascending",
             mappings = {
