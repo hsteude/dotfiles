@@ -1,9 +1,7 @@
 neovim
-flake8
 autopep8
 yapf
 ipython
 pdbpp
 ibdb
 neovim-remote
-jedi==0.17.2

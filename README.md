@@ -29,7 +29,7 @@ bash ~/dotfiles/update_nvim_nightly.sh
 Install Python via miniconda
 ```shell
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
+bash miniconda3-latest-linux-x86_64.sh
 ```
 
 Install Vim Plug
@@ -48,9 +48,17 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # geht syntax highlighting tool
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+```
 
-# source zshrc
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+Install pyright as Python LSP (using npm)
+```shell
+sudo apt install npm
+sudo npm install --global pyright
+```
+
+Create symlinks
+```shell script
+bash ~/dotfiles/create_symlinks.sh
 ```
 
 Install python requirements
@@ -63,17 +71,6 @@ Create an ipython profile
 ipython profile create
 rm ~/.ipython/profile_default/ipython_config.py # remove default file
 ln -s ~/dotfiles/ipython_config.py ~/.ipython/profile_default/ipython_config.py
-```
-
-Create symlinks
-```shell script
-bash ~/dotfiles/create_symlinks.sh
-```
-
-Install pyright as Python LSP (using npm)
-```shell
-sudo apt install npm
-sudo npm install --global pyright
 ```
 
 To get pyright and LSP to work I had to upgrade nodejs:
