@@ -8,7 +8,7 @@ export ZSH="/home/henrik/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="own"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -127,7 +127,7 @@ fortune | cowsay
 bindkey -v
 
 # remap caps lock key
-setxkbmap -option caps:escape
+#setxkbmap -option caps:escape
 
 #needs to be source at the end of this file!!
 #source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -140,5 +140,4 @@ if [ -f ~/.aliases ]; then
        source ~/.aliases
 fi
 
-source /home/henrik/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/henrik/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

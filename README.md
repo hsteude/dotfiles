@@ -4,27 +4,26 @@ Mostly for python development and some tex stuff. I use zsh as shell and nneovim
 
 ## Installation
 
-The steps below should work on a fresh debian like system. However, it's still a
-little bumpy here and there. So be patient :)
+The steps below should work on a fresh fedora OS.
+You can also find a branch for debian like systems in this repo.
+However, it's still a little bumpy here and there. So be patient :)
 
-Lets go and update all debian packages:
+
+Lets go and update all all packages:
 ```shell
-sudo apt update
-sudo apt upgrade
+sudo dnf update -y
 ```
 
 Install necessary cmd tools
 ```shell
-sudo apt install ripgrep fzy git neovim wget curl zsh gcc cowsay fortune -y
-sudo ln -s /usr/games/cowsay /usr/bin/cowsay
-sudo ln -s /usr/games/fortune /usr/bin/fortune
+sudo dnf install ripgrep git neovim wget curl zsh gcc cowsay fortune-mod -y
+sudo dnf install dnf-plugins-core
+sudo dnf copr enable lehrenfried/fzy
+sudo dnf install fzy -y
+
 cd; git clone https://github.com/hsteude/dotfiles.git
 ```
 
-Install / update nvim nightly
-```shell
-bash ~/dotfiles/update_nvim_nightly.sh
-```
 
 Install Python via miniconda
 ```shell
@@ -52,7 +51,7 @@ echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> 
 
 Install pyright as Python LSP (using npm)
 ```shell
-sudo apt install npm
+sudo dnf install npm
 sudo npm install --global pyright
 ```
 
@@ -61,7 +60,7 @@ Create symlinks
 bash ~/dotfiles/create_symlinks.sh
 ```
 
-Install python requirements
+Install python requirements (for using nvim as IDE)
 ```shell
 pip install -r ~/dotfiles/nvim/requirements.txt
 ```
@@ -73,65 +72,32 @@ rm ~/.ipython/profile_default/ipython_config.py # remove default file
 ln -s ~/dotfiles/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 ```
 
-To get pyright and LSP to work I had to upgrade nodejs:
+Install Jetbrain mono fonts:
 ```shell
-curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo dnf copr enable elxreno/jetbrains-mono-fonts -y && sudo dnf install jetbrains-mono-fonts -y
 ```
-
-
-Install nerd fonts to make NerdTree pretty (maybe also download jetbrain mono from jetbrain website and put it to ~/fonts)
-```shell
-cd
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hermit.zip
-unzip Hermit.zip
-mkdir ~/.fonts 
-cp ./Hurmit*.otf ~/.fonts
-fc-cache -fv
-```
-
 
 Install TexLive if needed:
 ```shell
-sudo apt-get install texlive-full
+sudo dnf install texlive-scheme-full -y
 sudo apt install zathura
+# we need rust to build taxlab from source (the lsp server for tex)
+sudo dnf install rust cargo
+cargo install --git https://github.com/latex-lsp/texlab.git --locked
+sudo mv ~/.cargo/bin/texlab /usr/local/bin/
+
 ```
 
-mkdir -p ~/.local/bin
-ln -s /usr/bin/batcat ~/bin/bat
+# LanguageTool
+curl -L https://raw.githubusercontent.com/languagetool-org/languagetool/master/install.sh | sudo bash
+sudo mv LanguageTool-5.4-stable /usr/local/bin
+sudo dnf install java-latest-openjdk.x86_64
 
 
-# Other notes on my setup(
-For the Apple Magic Mouse I use it takes a special driver
-```shell
-cd ~/bin
-sudo apt install dkms
-git clone https://github.com/RicardoEPRodrigues/Linux-Magic-Trackpad-2-Driver.git
-cd Linux-Magic-Trackpad-2-Driver
-chmod u+x install.sh
-sudo ./install.sh
-```
+# Other notes on my setup()
+Neither the teams-for-linux app nor the default chromium browser where able to
+smoothly run MS-Teams (either no video or no screen sharing...).
+The issue is the missing wayland support (I guess)
+In this [article](https://uwot.eu/blog/microsoft-teams-on-fedora-and-wayland-with-screenshare/) I found a way to get it running using chromium-freeworld and
+pipewire.
 
-
-# Install on ec2 ami (pretty old, i guess this needs to be updated, if in doubt use debian/ubunte or similar)
-```shell
-sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-sudo yum install tmux tree ripgrep gcc git wget zsh cowsay fortune-mod.x86_64 -y
-git clone https://github.com/jhawthorn/fzy.git
-cd fzy; sudo make install; cd
-sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-sudo yum install -y neovim
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-sudo bash Miniconda3-latest-Linux-x86_64.sh
-cd; git clone https://github.com/hsteude/dotfiles.git
-bash ~/dotfiles/create_symlinks.sh
-source ~/.bashrc
-/usr/local/miniconda/bin/conda init
-pip install -r ~/dotfiles/nvim/requirements.txt
-echo "let g:python3_host_prog = '$(which python)'" >> ~/dotfiles/nvim/init.vim
-echo 'let g:semshi#excluded_buffers = ['*']' >> ~/dotfiles/nvim/init.vim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim +'PlugInstall' +'UpdateRemotePlugins' +qa
-echo "export PATH=$PATH:~/.local/bin"
-```

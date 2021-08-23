@@ -184,7 +184,7 @@ local plugins = {
 	'tpope/vim-surround',
 
     -- Better spell checking
-	'vigoux/LanguageTool.nvim',
+	'rhysd/vim-grammarous',
 
     -- NeoVim LSP config
     'neovim/nvim-lspconfig',
@@ -215,7 +215,7 @@ g.gruvbox_italic = 1
 g.gruvbox_contrast_light = 1
 
 
-g.languagetool_server_jar = '/usr/local/bin/LanguageTool-5.3/languagetool-server.jar'
+g.languagetool_server_jar = '/usr/local/bin/LanguageTool-5.4-stable/languagetool-server.jar'
 
 ---------
 -- Colors
