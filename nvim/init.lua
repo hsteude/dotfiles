@@ -117,6 +117,7 @@ local plugins = {
     -- colorschemes
 	'morhetz/gruvbox',
     'NLKNguyen/papercolor-theme',
+    'Shatur/neovim-ayu',
 
     -- autoformatiing with autopep8 
     'sbdchd/neoformat',
@@ -220,10 +221,10 @@ g.languagetool_server_jar = '/usr/local/bin/LanguageTool-5.3/languagetool-server
 ---------
 -- Colors
 ---------
-local theme = 'gruvbox'
+local theme = 'ayu'
 --local theme = 'PaperColor'
-local airline_theme = 'papercolor'
-local airline_theme = 'gruvbox'
+--local airline_theme = 'papercolor'
+local airline_theme = 'minimalist'
 vim.api.nvim_command('colorscheme ' .. theme)
 
 ---------------
@@ -464,7 +465,7 @@ require'compe'.setup {
   incomplete_delay = 400;
   max_abbr_width = 100;
   max_kind_width = 100;
-  max_menu_width = 100;
+  max_menu_width = 101;
   documentation = true;
 
   source = {
