@@ -4,3 +4,10 @@
 
 [core]
 	editor = nvim
+
+[filter "nbstripout"]
+	clean = \"/home/henrik/miniconda3/bin/python\" -m nbstripout
+	smudge = cat
+
+[diff "ipynb"]
+	textconv = \"/home/henrik/miniconda3/bin/python\" -m nbstripout -t
