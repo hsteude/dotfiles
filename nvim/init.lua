@@ -373,9 +373,9 @@ g.NERDTreeShowHidden = 1
 
 ------------------------
 -- airline (status bar)
---g.airline_powerline_fonts = 1
---g["airline#extensions#tabline#enabled"] = 1
---g["airline#extensions#tabline#fnamemod"] = ':t'
+g.airline_powerline_fonts = 1
+g["airline#extensions#tabline#enabled"] = 1
+g["airline#extensions#tabline#fnamemod"] = ':t'
 g.airline_theme = airline_theme
 
 ------------------------
