@@ -22,7 +22,7 @@ local g = vim.g
 local U = {}
 
 -- Key mapping function
-function U.map(mode, key, result, opts)
+function U.map(mode,key, result, opts)
     opts =
         vim.tbl_extend(
         "keep",
@@ -185,7 +185,7 @@ local plugins = {
 	'tpope/vim-surround',
 
     -- Better spell checking
-	'vigoux/LanguageTool.nvim',
+	'rhysd/vim-grammarous',
 
     -- NeoVim LSP config
     'neovim/nvim-lspconfig',
@@ -216,7 +216,7 @@ g.gruvbox_italic = 1
 g.gruvbox_contrast_light = 1
 
 
-g.languagetool_server_jar = '/usr/local/bin/LanguageTool-5.3/languagetool-server.jar'
+g.languagetool_server_jar = '/usr/local/bin/LanguageTool-5.4-stable/languagetool-server.jar'
 
 ---------
 -- Colors
@@ -369,12 +369,12 @@ g.NERDTreeShowHidden = 1
 -- Vim Move
 --------------------------
 --g.move_map_keys = 0
---g.move_key_modifier = "T"
+g.move_key_modifier = "C"
 
 ------------------------
 -- airline (status bar)
 g.airline_powerline_fonts = 1
-g["airline#extensions#tabline#enabled"] = 1
+g["airline#extensions#tabline#enabled"] = 0
 g["airline#extensions#tabline#fnamemod"] = ':t'
 g.airline_theme = airline_theme
 
@@ -465,7 +465,7 @@ require'compe'.setup {
   incomplete_delay = 400;
   max_abbr_width = 100;
   max_kind_width = 100;
-  max_menu_width = 101;
+  max_menu_width = 100;
   documentation = true;
 
   source = {
@@ -480,4 +480,5 @@ require'compe'.setup {
 }
 
 local function keymap(k,m) vim.api.nvim_set_keymap('i', k, m, {noremap=true, silent=true, expr=true}) end
-keymap('<C-Space>', 'compe#complete()')
+keymap('<C-Space>', 'compe#complete()') 
+

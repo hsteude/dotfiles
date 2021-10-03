@@ -16,4 +16,4 @@ ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.condarc ~/.condarc
 ln -s ~/dotfiles/own.zsh-theme ~/.oh-my-zsh/themes/own.zsh-theme
-
+ln -s ~/dotfiles/ipython_config.py ~/.ipython/profile_default/ipython_config.py
