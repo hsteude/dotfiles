@@ -12,3 +12,4 @@ mkdir -p ~/.ipython/profile_default
 ln -s ~/dotfiles/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 ln -s ~/dotfiles/.skhdrc ~/.skhdrc
 ln -s ~/dotfiles/.yabairc ~/.yabairc
+ln -s ~/dotfiles/keymap.c ~/qmk_firmware/keyboards/planck/keymaps/hsteude/keymap.c

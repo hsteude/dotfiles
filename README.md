@@ -6,7 +6,7 @@ Mostly for python development and some tex stuff. I use zsh as shell and nvim as
 
 Install necessary cmd tools
 ```shell
-brew install ripgrep neovim fzy git wget curl zsh gcc ctags cowsay fortune lua bat tmux
+brew install ripgrep neovim fzy git wget curl zsh gcc ctags cowsay fortune lua bat tmux zathura
 brew install --cask iterm2 firefow
 cd; git clone https://github.com/hsteude/dotfiles.git
 for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
@@ -40,6 +40,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 
 # source zshrc
+mv zsh-syntax-highlighting /usr/local/share
 source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
 
@@ -50,26 +51,8 @@ source ~/.zshrc
 pip install -r ~/dotfiles/nvim/requirements.txt
 ```
 
-
-# Install on ec2 ami
-```shell
-sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-sudo yum install tmux tree ripgrep gcc git wget zsh cowsay fortune-mod.x86_64 -y
-git clone https://github.com/jhawthorn/fzy.git
-cd fzy; sudo make install; cd
-sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-sudo yum install -y neovim
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-sudo bash Miniconda3-latest-Linux-x86_64.sh
-cd; git clone https://github.com/hsteude/dotfiles.git
-bash ~/dotfiles/create_symlinks.sh
-source ~/.bashrc
-/usr/local/miniconda/bin/conda init
-pip install -r ~/dotfiles/nvim/requirements.txt
-echo "let g:python3_host_prog = '$(which python)'" >> ~/dotfiles/nvim/init.vim
-echo 'let g:semshi#excluded_buffers = ['*']' >> ~/dotfiles/nvim/init.vim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim +'PlugInstall' +'UpdateRemotePlugins' +qa
-echo "export PATH=$PATH:~/.local/bin"
+Installing yabai
 ```
+Quite messy process. Check yabai github wiki!
+```
+

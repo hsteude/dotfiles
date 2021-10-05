@@ -110,7 +110,7 @@ bindkey -v
 
 
 # Without this line conda shows a weird behaviour in tmux
-[[ -z $TMUX ]] || conda deactivate; conda activate base
+#[[ -z $TMUX ]] || conda deactivate; conda activate base
 
 
 #needs to be source at the end of this file!!

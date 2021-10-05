@@ -1,3 +1,4 @@
+
 # Yabai window navigation
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
@@ -61,9 +62,6 @@ alt - f         : yabai -m window --toggle zoom-fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
 
 
-# Move between spaces
-shift + lctrl + alt - l: yabai -m space --focus next
-shift + lctrl + alt - h: yabai -m space --focus prev
 
 # Restart Yabai
 shift + lctrl + alt - r : 
@@ -71,3 +69,6 @@ shift + lctrl + alt - r :
         "display notification \"Restarting Yabai\" with title \"Yabai\""; \
     launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
+# Through window to next / previous space and fous the new space
+cmd + alt - l : yabai -m window --space next && yabai -m space --focus next
+cmd + alt - h : yabai -m window --space prev && yabai -m space --focus prev
