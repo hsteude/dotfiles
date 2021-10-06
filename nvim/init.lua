@@ -116,8 +116,8 @@ local plugins = {
 
     -- colorschemes
 	'morhetz/gruvbox',
-    'NLKNguyen/papercolor-theme',
-    'Shatur/neovim-ayu',
+        'NLKNguyen/papercolor-theme',
+        'Shatur/neovim-ayu',
 
     -- autoformatiing with autopep8 
     'sbdchd/neoformat',
@@ -189,7 +189,11 @@ local plugins = {
 
     -- NeoVim LSP config
     'neovim/nvim-lspconfig',
-    'hrsh7th/nvim-compe',
+    'neovim/nvim-lspconfig',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-path',
 
     -- Zen Mode
     'folke/zen-mode.nvim'
@@ -438,47 +442,28 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- Use a loop to conveniently both setup defined servers 
--- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "texlab"}
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
-end
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = false
     }
 )
+-- Setup nvim-cmp.
+  local cmp = require'cmp'
 
---------
--- compe
---------
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
+  cmp.setup({
+    sources = {
+      { name = 'nvim_lsp' },
+      { name = 'path' },
+      { name = 'vsnip' },
+      { name = 'buffer' },
+    }
+  })
 
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = false;
-    ultisnips = false;
-  };
-}
-
-local function keymap(k,m) vim.api.nvim_set_keymap('i', k, m, {noremap=true, silent=true, expr=true}) end
-keymap('<C-Space>', 'compe#complete()') 
+  -- Setup lspconfig.
+local servers = { "pyright", "texlab"}
+for _, lsp in ipairs(servers) do
+  require('lspconfig')[lsp].setup {
+      on_attach = on_attach,
+  } 
+end
 

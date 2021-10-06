@@ -98,6 +98,10 @@ export PYTHONIOENCODING=UTF-8
 TEX_PATH=/Library/TeX/texbin
 export PATH=$PATH:$TEX_PATH
 
+# add cargo stuff to path
+CARGO_PATH=~/.cargo/bin
+export PATH=$PATH:$CARGO_PATH
+
 # ipbd instead of pdb by default breakpoint
 export PYTHONBREAKPOINT=ipdb.set_trace
 
