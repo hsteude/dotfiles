@@ -71,3 +71,4 @@ yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
 yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
 yabai -m rule --add label="Spotify" app="^Spotify$" manage=off
+yabai -m rule --add label="Signal" app="^Signal$" manage=off
