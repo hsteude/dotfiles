@@ -116,8 +116,8 @@ local plugins = {
 
     -- colorschemes
 	'morhetz/gruvbox',
-        'NLKNguyen/papercolor-theme',
-        'Shatur/neovim-ayu',
+    'NLKNguyen/papercolor-theme',
+    'Shatur/neovim-ayu',
 
     -- autoformatiing with autopep8 
     'sbdchd/neoformat',
@@ -187,6 +187,9 @@ local plugins = {
     -- Better spell checking
 	'rhysd/vim-grammarous',
 
+    -- Autoformatting
+    'sbdchd/neoformat',
+
     -- NeoVim LSP config
     'neovim/nvim-lspconfig',
     'neovim/nvim-lspconfig',
@@ -230,14 +233,6 @@ local theme = 'ayu'
 --local airline_theme = 'papercolor'
 local airline_theme = 'minimalist'
 vim.api.nvim_command('colorscheme ' .. theme)
-
----------------
--- Autocommands
----------------
---TODO: ??
-vim.cmd('autocmd BufWinLeave * silent! mkview')
--- and reload on entering it
-vim.cmd('autocmd BufWinEnter * silent! loadview')
 
 ----------
 -- Mappings
@@ -448,16 +443,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
 )
 -- Setup nvim-cmp.
-  local cmp = require'cmp'
+local cmp = require'cmp'
 
-  cmp.setup({
-    sources = {
-      { name = 'nvim_lsp' },
-      { name = 'path' },
-      { name = 'vsnip' },
-      { name = 'buffer' },
-    }
-  })
+cmp.setup({
+sources = {
+  { name = 'nvim_lsp' },
+  { name = 'path' },
+  { name = 'vsnip' },
+  { name = 'buffer' },
+}
+})
 
   -- Setup lspconfig.
 local servers = { "pyright", "texlab"}
