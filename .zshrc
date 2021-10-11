@@ -141,4 +141,3 @@ if [ -f ~/.aliases ]; then
 fi
 
 source /home/henrik/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/henrik/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

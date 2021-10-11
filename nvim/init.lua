@@ -189,7 +189,10 @@ local plugins = {
 
     -- NeoVim LSP config
     'neovim/nvim-lspconfig',
-    'hrsh7th/nvim-compe',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-path',
 
     -- Zen Mode
     'folke/zen-mode.nvim'
@@ -450,35 +453,22 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         virtual_text = false
     }
 )
+-- Setup nvim-cmp.
+local cmp = require'cmp'
 
---------
--- compe
---------
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = false;
-    ultisnips = false;
-  };
+cmp.setup({
+sources = {
+  { name = 'nvim_lsp' },
+  { name = 'path' },
+  { name = 'vsnip' },
+  { name = 'buffer' },
 }
+})
 
-local function keymap(k,m) vim.api.nvim_set_keymap('i', k, m, {noremap=true, silent=true, expr=true}) end
-keymap('<C-Space>', 'compe#complete()') 
-
+  -- Setup lspconfig.
+local servers = { "pyright", "texlab"}
+for _, lsp in ipairs(servers) do
+  require('lspconfig')[lsp].setup {
+      on_attach = on_attach,
+  } 
+end
