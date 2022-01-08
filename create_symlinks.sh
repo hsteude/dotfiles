@@ -1,5 +1,6 @@
 #!/bin/bash
 ln -s ~/dotfiles/.aliases ~/.aliases
+ln -s ~/dotfiles/flake8 ~/.config/flake8
 ln -s ~/dotfiles/.bash_profile ~/.bash_profile
 ln -s ~/dotfiles/.bashrc ~/.bashrc
 ln -s ~/dotfiles/nvim ~/.config/nvim

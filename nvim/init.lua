@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 -- Check if Plug is installed and download it if not
 --------------------------------------------------------------------------------
 local vim_plug_install_path = vim.fn['stdpath']('config') .. '/autoload/plug.vim'
@@ -108,8 +108,12 @@ end
 -------------
 
 local plugins = {
+    -- key mapping viz
+    'folke/which-key.nvim',
+    -- wiki
+    'vimwiki/vimwiki',
     -- git diff in sign column
-	'airblade/vim-gitgutter',
+    'airblade/vim-gitgutter',
 
     -- git plugin (commiting, blame, diff, etc.)
 	'tpope/vim-fugitive',
@@ -151,9 +155,14 @@ local plugins = {
 	'kshenoy/vim-signature',
 
 
-    -- fuzzy file search
+    -- file explorer
 	'scrooloose/nerdtree',
-	'Xuyuanp/nerdtree-git-plugin',
+
+    -- git indications in nerdtree
+    'Xuyuanp/nerdtree-git-plugin',
+
+    -- super important icons in nerdtree!!!
+    'ryanoasis/vim-devicons',
 
     -- Table Mode
 	--'dhruvasagar/vim-table-mode',
@@ -192,7 +201,7 @@ local plugins = {
 
     -- NeoVim LSP config
     'neovim/nvim-lspconfig',
-    'neovim/nvim-lspconfig',
+    'kabouzeid/nvim-lspinstall',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/nvim-cmp',
@@ -216,14 +225,31 @@ end
 
 vim.fn['plug#end']()
 
+
+require("which-key").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+}
+
 --------------------------
--- gruvbox (color scheme)
+-- Vimtexview method
 --------------------------
-g.gruvbox_italic = 1
-g.gruvbox_contrast_light = 1
+g.vimtex_view_method = 'skim'
 
 
 g.languagetool_server_jar = '/usr/local/bin/LanguageTool-5.4-stable/languagetool-server.jar'
+
+--------------------------
+-- VIMWIKI
+--------------------------
+vim.g.vimwiki_list = {
+    {
+        path = '/Users/henrik/Google Drive/WIKI',
+        syntax = 'markdown',
+        ext = '.md',
+    }
+}
 
 ---------
 -- Colors
@@ -247,12 +273,12 @@ U.map('n', 'w!!', '%!sudo tee > /dev/null %')
 -- make ctrl-l remove highlights and re-apply syntax highlighting
 U.map('n', '<C-l>', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>')
 -- switch to next/previous buffer with Tab/shift+Tab
-U.map('n', '<Tab>', ':bnext<CR>')
-U.map('n', '<S-Tab>', ':bprevious<CR>')
+U.map('n', 'L', ':bnext<CR>')
+U.map('n', 'H', ':bprevious<CR>')
 -- shortcut to replace highlighted section with paste register content
 U.map("v", "<leader>p", "_dP")
 -- nerdtree shortcut
-U.map("n", "N", ":NERDTree<CR>")
+U.map("n", "<leader>e", ":NERDTree<CR>")
 -- insert breakpoint in python
 U.map("n", "<leader>b", "obreakpoint()<ESC>")
 -- toggle zen mode with leader z
@@ -373,7 +399,7 @@ g.NERDTreeShowHidden = 1
 ------------------------
 -- airline (status bar)
 g.airline_powerline_fonts = 1
-g["airline#extensions#tabline#enabled"] = 0
+g["airline#extensions#tabline#enabled"] = 1
 g["airline#extensions#tabline#fnamemod"] = ':t'
 g.airline_theme = airline_theme
 

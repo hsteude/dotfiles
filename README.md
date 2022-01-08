@@ -56,3 +56,21 @@ Installing yabai
 Quite messy process. Check yabai github wiki!
 ```
 
+Install pyright
+```
+brew install pyright
+```
+
+Install texlab
+```
+cargo install --git https://github.com/latex-lsp/texlab.git --locked
+```
+
+Install node
+```
+brew install node
+
+```
+
+
+

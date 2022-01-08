@@ -9,3 +9,5 @@
 	smudge = cat
 [diff "ipynb"]
 	textconv = \"/Users/henrik/miniconda3/envs/LSTM-GRU/bin/python\" -m nbstripout -t
+[init]
+	defaultBranch = main
