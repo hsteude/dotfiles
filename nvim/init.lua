@@ -235,7 +235,7 @@ require("which-key").setup {
 --------------------------
 -- Vimtexview method
 --------------------------
-g.vimtex_view_method = 'skim'
+g.vimtex_view_method = 'zathura'
 
 
 g.languagetool_server_jar = '/usr/local/bin/LanguageTool-5.4-stable/languagetool-server.jar'
