@@ -1,18 +1,10 @@
--------------------------------------------------------------------------------
--- Check if Plug is installed and download it if not
---------------------------------------------------------------------------------
-local vim_plug_install_path = vim.fn['stdpath']('config') .. '/autoload/plug.vim'
-
-local f = io.open(vim_plug_install_path, 'r')
-if f == nil then
-    os.execute(('curl -fLo %s --create-dirs %s'):format(
-		vim_plug_install_path,
-		'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	))
-    vim.api.nvim_command('autocmd VimEnter * PlugInstall --sync | source $MYVIMRC')
-else
-	f:close()
-end
+local fn = vim.fn
+local cmd = vim.cmd
+cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
+cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]]
+cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
+cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
+cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
 
 ------------
 local api = vim.api
@@ -22,7 +14,7 @@ local g = vim.g
 local U = {}
 
 -- Key mapping function
-function U.map(mode,key, result, opts)
+function U.map(mode, key, result, opts)
     opts =
         vim.tbl_extend(
         "keep",
@@ -107,135 +99,15 @@ end
 -- Plugins --
 -------------
 
-local plugins = {
-    -- key mapping viz
-    'folke/which-key.nvim',
-    -- wiki
-    'vimwiki/vimwiki',
-    -- git diff in sign column
-    'airblade/vim-gitgutter',
-
-    -- git plugin (commiting, blame, diff, etc.)
-	'tpope/vim-fugitive',
-
-    -- colorschemes
-	'morhetz/gruvbox',
-    'NLKNguyen/papercolor-theme',
-    'Shatur/neovim-ayu',
-
-    -- autoformatiing with autopep8 
-    'sbdchd/neoformat',
-
-    -- indenting python properly
-	'hynek/vim-python-pep8-indent',
-
-    -- proper folding for python
-	'tmhedberg/SimpylFold',
-
-    -- Markdown preview
-    'iamcco/markdown-preview.nvim',
-
-    -- text objects for indented languages (python)
-	--'tweekmonster/braceless.vim',
-
-    -- Motions for CamelCase and snake_case
-	--'bkad/CamelCaseMotion',
-
-    -- easy commenting out of code
-	'scrooloose/nerdcommenter',
-
-    -- prettier status line
-    'vim-airline/vim-airline',
-    'vim-airline/vim-airline-themes',
-
-    -- LaTeX plugin
-    'lervag/vimtex',
-
-    -- display marks
-	'kshenoy/vim-signature',
 
 
-    -- file explorer
-	'scrooloose/nerdtree',
-
-    -- git indications in nerdtree
-    'Xuyuanp/nerdtree-git-plugin',
-
-    -- super important icons in nerdtree!!!
-    'ryanoasis/vim-devicons',
-
-    -- Table Mode
-	--'dhruvasagar/vim-table-mode',
-
-    -- Rust
-	--'rust-lang/rust.vim',
-
-    -- Typescript
-	--'leafgarland/typescript-vim',
-
-    -- Fancy start screen
-    'mhinz/vim-startify',
-
-    -- Make the yanked region apparent!
-	'machakann/vim-highlightedyank',
-
-    -- telescope is a fuzz finder for filenames, their contents and more
-	'nvim-telescope/telescope.nvim',
-	'nvim-lua/plenary.nvim',  -- dependency of telescope
-	'nvim-lua/popup.nvim',  -- dependency of telescope
-
-    -- Shows register overview
-	'gennaro-tedesco/nvim-peekup',
-
-    -- Move current selection up (down) with Alt-k (Alt-j)
-	'matze/vim-move',
-
-    --Cchange/add/delete `sourroundings`
-	'tpope/vim-surround',
-
-    -- Better spell checking
-	'rhysd/vim-grammarous',
-
-    -- Autoformatting
-    'sbdchd/neoformat',
-
-    -- NeoVim LSP config
-    'neovim/nvim-lspconfig',
-    'kabouzeid/nvim-lspinstall',
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-path',
-
-    -- Zen Mode
-    'folke/zen-mode.nvim'
-}
 
 
-local path = vim.fn['stdpath']('data') .. '/plugged'
-vim.fn['plug#begin'](path)
-
-for _,p in pairs(plugins) do
-    if type(p) == 'table' then
-        vim.fn['plug#'](unpack(p))
-    else
-        vim.fn['plug#'](p)
-    end
-end
-
-vim.fn['plug#end']()
-
-
-require("which-key").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-}
 
 --------------------------
 -- Vimtexview method
 --------------------------
-g.vimtex_view_method = 'zathura'
+g.vimtex_view_method = 'skim'
 
 
 g.languagetool_server_jar = '/usr/local/bin/LanguageTool-5.4-stable/languagetool-server.jar'
@@ -259,30 +131,6 @@ local theme = 'ayu'
 --local airline_theme = 'papercolor'
 local airline_theme = 'minimalist'
 vim.api.nvim_command('colorscheme ' .. theme)
-
-----------
--- Mappings
------------
--- don't use ex mode, use Q for formatting (wrapping text in new lines)
-U.map('n', 'Q', 'gq}')
--- mapping to write file that needs sudo privileges
-U.map('n', 'w!!', '%!sudo tee > /dev/null %')
--- make Y work as C or D,
---U.map('n', 'Y', 'y$')
---Uap('v', 'Y', ':"<,">,let @+ = @"<CR>')
--- make ctrl-l remove highlights and re-apply syntax highlighting
-U.map('n', '<C-l>', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>')
--- switch to next/previous buffer with Tab/shift+Tab
-U.map('n', 'L', ':bnext<CR>')
-U.map('n', 'H', ':bprevious<CR>')
--- shortcut to replace highlighted section with paste register content
-U.map("v", "<leader>p", "_dP")
--- nerdtree shortcut
-U.map("n", "<leader>e", ":NERDTree<CR>")
--- insert breakpoint in python
-U.map("n", "<leader>b", "obreakpoint()<ESC>")
--- toggle zen mode with leader z
-U.map("n", "<leader>z", ":ZenMode<CR>")
 
 ------------
 -- Telescope
@@ -321,12 +169,6 @@ function TelescopeOpen(fn)
     finders[fn]()
 end
 
--- Ctrl-p = fuzzy finder
-U.map("n", "<C-P>", "<CMD>lua require('telescope.builtin').find_files()<CR>")
-U.map("n", "<leader>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>")
-U.map("n", "<leader>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>")
-U.map("n", "<leader>fb", "<CMD>lua require('telescope.builtin').buffers()<CR>")
-U.map("n", "<leader>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>")
 
 
 --------------------------
@@ -410,64 +252,85 @@ require('nvim-peekup.config').on_keystroke["delay"] = '100ms'
 require('nvim-peekup.config').on_keystroke["autoclose"] = true
 require('nvim-peekup.config').on_keystroke["paste_reg"] = '"'
 
+local lsp_installer = require("nvim-lsp-installer")
+
+-- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
+-- or if the server is already installed).
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+
+    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
+    -- before passing it onwards to lspconfig.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+end)
+
+
+
 ------------
 -- lspconfig
 ------------
-require'lspconfig'.pyright.setup{}
-local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+--local nvim_lsp = require('lspconfig')
+--local on_attach = function(client, bufnr)
+  --local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  ---- Mappings.
+  --local opts = { noremap=true, silent=true }
+  --buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  --buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  --buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  --buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  --buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  --buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  --buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  --buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  --buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  --buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  --buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  --buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  --buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  --buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
-  -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  end
-  if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("v", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  end
+  ---- Set some keybinds conditional on server capabilities
+  --if client.resolved_capabilities.document_formatting then
+    --buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  --end
+  --if client.resolved_capabilities.document_range_formatting then
+    --buf_set_keymap("v", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  --end
 
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
-  end
-end
+  ---- Set autocommands conditional on server_capabilities
+  --if client.resolved_capabilities.document_highlight then
+    --vim.api.nvim_exec([[
+      --hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+      --hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+      --hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+      --augroup lsp_document_highlight
+        --autocmd! * <buffer>
+        --autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        --autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      --augroup END
+    --]], false)
+  --end
+--end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = false
     }
 )
+
+
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
@@ -480,11 +343,52 @@ sources = {
 }
 })
 
-  -- Setup lspconfig.
-local servers = { "pyright", "texlab"}
-for _, lsp in ipairs(servers) do
-  require('lspconfig')[lsp].setup {
-      on_attach = on_attach,
-  } 
-end
+----------
+-- Mappings
+-----------
+-- don't use ex mode, use Q for formatting (wrapping text in new lines)
+U.map('n', 'Q', 'gq}')
+-- mapping to write file that needs sudo privileges
+U.map('n', 'w!!', '%!sudo tee > /dev/null %')
+-- make Y work as C or D,
+--U.map('n', 'Y', 'y$')
+--Uap('v', 'Y', ':"<,">,let @+ = @"<CR>')
+-- make ctrl-l remove highlights and re-apply syntax highlighting
+U.map('n', '<C-l>', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>')
+-- switch to next/previous buffer with Tab/shift+Tab
+U.map('n', 'L', ':bnext<CR>')
+U.map('n', 'H', ':bprevious<CR>')
+-- shortcut to replace highlighted section with paste register content
+U.map("v", "<leader>p", "_dP")
+-- nerdtree shortcut
+U.map("n", "<leader>e", ":NERDTree<CR>")
+-- insert breakpoint in python
+U.map("n", "<leader>b", "obreakpoint()<ESC>")
+-- toggle zen mode with leader z
+U.map("n", "<leader>z", ":ZenMode<CR>")
 
+-- Ctrl-p = fuzzy finder and stuff
+U.map("n", "<C-P>", "<CMD>lua require('telescope.builtin').find_files()<CR>")
+U.map("n", "<leader>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>")
+U.map("n", "<leader>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>")
+U.map("n", "<leader>fb", "<CMD>lua require('telescope.builtin').buffers()<CR>")
+U.map("n", "<leader>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>")
+
+-- LSP Mappings
+U.map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
+U.map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
+U.map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+U.map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+U.map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+U.map('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR')
+
+--U.map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+--U.map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+--U.map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+U.map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+U.map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+U.map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+U.map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+U.map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+U.map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+U.map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
