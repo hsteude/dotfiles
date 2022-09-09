@@ -43,6 +43,9 @@ fortune | cowsay
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
+# strage delete key behaviour in vi moe
+bindkey "^?" backward-delete-char
+
 
 # Without this line conda shows a weird behaviour in tmux
 #[[ -z $TMUX ]] || conda deactivate; conda activate base
@@ -53,6 +56,7 @@ source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
+
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/henrik/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/henrik/google-cloud-sdk/path.zsh.inc'; fi
@@ -78,3 +82,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
+
+export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

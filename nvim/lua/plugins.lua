@@ -19,14 +19,11 @@ return require('packer').startup(function()
   }
 
   -- Markdown preview
-use {
-  'iamcco/markdown-preview.nvim',
-  ft = 'markdown',
-  run = 'cd app && yarn install'
-}
+  -- Did not run on new macbook
+  --use { 'iamcco/markdown-preview.nvim', ft = 'markdown', run = 'cd app && yarn install' }
 
   -- wiki
-  use'vimwiki/vimwiki'
+  --use'vimwiki/vimwiki'
 
   -- git diff in sign column
   use 'airblade/vim-gitgutter'
@@ -38,7 +35,7 @@ use {
   use 'Shatur/neovim-ayu'
 
   -- indenting python properly
-  use 'hynek/vim-python-pep8-indent'
+  --use 'hynek/vim-python-pep8-indent'
 
   -- proper folding for python
   use 'tmhedberg/SimpylFold'
@@ -54,10 +51,6 @@ use {
   -- LaTeX plugin
   use 'lervag/vimtex'
 
-  -- display marks
-  use 'kshenoy/vim-signature'
-
-
   -- file explorer
   use 'scrooloose/nerdtree'
 
@@ -67,36 +60,35 @@ use {
   -- super important icons in nerdtree!!!
   use 'ryanoasis/vim-devicons'
 
-
   -- Fancy start screen
   use 'mhinz/vim-startify'
-
-  -- Make the yanked region apparent!
-  use 'machakann/vim-highlightedyank'
 
   -- telescope is a fuzz finder for filenames, their contents and more
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-lua/plenary.nvim'  -- dependency of telescope
-  use 'nvim-lua/popup.nvim'  -- dependency of telescope
 
   -- Shows register overview
   use 'gennaro-tedesco/nvim-peekup'
 
   -- Move current selection up (down) with Alt-k (Alt-j)
-  use 'matze/vim-move'
+  --use 'matze/vim-move'
 
   --Cchange/add/delete `sourroundings`
   use 'tpope/vim-surround'
 
   -- Better spell checking
-  use 'rhysd/vim-grammarous'
+  --use 'rhysd/vim-grammarous'
 
   -- Autoformatting
-  use 'sbdchd/neoformat'
+  --use 'sbdchd/neoformat'
 
-  -- NeoVim LSP config
+  -- NeoVim LpSP config
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
+  use 'mfussenegger/nvim-lint'
+  use 'mhartington/formatter.nvim'
+
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/nvim-cmp'
