@@ -57,7 +57,7 @@ local global_opts = {
     incsearch     = true,
     backspace     = 'indent,eol,start',
     completeopt   = 'menuone,noselect',
-    formatoptions = 'j,r,o,q'  -- see `help fo-table` for meaning
+    formatoptions = 'j,r,o,q',  -- see `help fo-table` for meaning
 }
 
 local win_opts = {
@@ -68,6 +68,7 @@ local win_opts = {
     foldexpr   = 'nvim_treesitter#foldexpr()',
     foldenable = true,
     foldlevel   = 10,
+    colorcolumn = '80',
 }
 
 local buf_opts = {
@@ -78,7 +79,7 @@ local buf_opts = {
     shiftwidth  = 4,
     softtabstop = 4,
     tabstop     = 4,
-    textwidth   = 80,
+    textwidth   = 79,
 }
 
 for k, v in pairs(global_opts) do
@@ -98,25 +99,45 @@ end
 
 
 
-
-
 --------------------------
 -- Vimtexview method
 --------------------------
 g.vimtex_view_method = 'skim'
 
 
-g.languagetool_server_jar = '/usr/local/bin/LanguageTool-5.4-stable/languagetool-server.jar'
-
-
 ---------
 -- Colors
 ---------
-local theme = 'ayu'
+--local theme = 'ayu'
 --local theme = 'PaperColor'
+--local theme = 'gruvebox'
 --local airline_theme = 'papercolor'
-local airline_theme = 'minimalist'
-vim.api.nvim_command('colorscheme ' .. theme)
+--local airline_theme = 'gruvbox'
+--vim.api.nvim_command('colorscheme ' .. theme)
+--colorscheme = 'gruvbox'
+
+vim.highlight.create('Comment', {cterm='italic', gui='italic'}, false)
+
+-- setup must be called before loading the colorscheme
+-- Default options:
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = true,
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
+  overrides = {
+              SignColumn = {bg = ""}
+  },
+})
+vim.cmd("colorscheme gruvbox")
+
 
 ------------
 -- Telescope
@@ -160,11 +181,12 @@ require("mason-lspconfig").setup_handlers {
     function (server_name) -- default handler (optional)
         require("lspconfig")[server_name].setup {}
     end,
-    -- Next, you can provide targeted overrides for specific servers.
-    -- For example, a handler override for the `rust_analyzer`:
-    ["rust_analyzer"] = function ()
-        require("rust-tools").setup {}
-    end
+
+        -- Next, you can provide targeted overrides for specific servers.
+        -- For example, a handler override for the rust_analyzer:
+        --["rust_analyzer"] = function ()
+            --require("rust-tools").setup {}
+        --end
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -173,6 +195,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
 )
 
+local lspconfig = require('lspconfig')
+lspconfig.ltex.setup {
+    settings = {
+        ltex = {
+            language = 'de'
+        }
+    }
+}
 
 function TelescopeOpen(fn)
     finders[fn]()
@@ -246,7 +276,7 @@ g.NERDTreeShowHidden = 1
 g.airline_powerline_fonts = 1
 g["airline#extensions#tabline#enabled"] = 1
 g["airline#extensions#tabline#fnamemod"] = ':t'
-g.airline_theme = airline_theme
+g.airline_theme = 'minimalist'
 
 g["grammarous#use_vim_spelllang"] = 1
 
@@ -336,5 +366,7 @@ U.map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 U.map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 U.map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
 U.map('n', '<leader>mp', '<cmd>!open -a "firefox" "%" <CR>')
-
-
+-- The following command requires plug-ins "nvim-telescope/telescope.nvim",
+-- "nvim-lua/plenary.nvim", and optionally "kyazdani42/nvim-web-devicons" for icon support
+vim.api.nvim_set_keymap('n', '<leader>dd', '<cmd>Telescope diagnostics<CR>',
+    { noremap = true, silent = true })

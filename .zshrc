@@ -85,3 +85,25 @@ unset __conda_setup
 
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export TERM=xterm-256color
+
+
+# STARTUP
+zstyle :omz:plugins:ssh-agent identities id_rsa id_github
+
+# stolen from https://github.com/geier/dotfiles/blob/master/.zshrc
+# set the terminal's title to the current command {{{
+# despite its name, it works in most terminals
+autoload -Uz add-zsh-hook
+function xterm_title_precmd () {
+	print -Pn '\e]0;%~ \a'
+}
+function xterm_title_preexec () {
+	print -Pn '\e]0;%~: '
+	print -n "${(q)1}\a"
+}
+if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*) ]]; then
+	add-zsh-hook -Uz precmd xterm_title_precmd
+	add-zsh-hook -Uz preexec xterm_title_preexec
+fi
+# }}}

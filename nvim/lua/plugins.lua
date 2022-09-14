@@ -1,4 +1,5 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This file can be loaded by calling `lua require('plugins')` from your
+-- init.vim
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -18,12 +19,16 @@ return require('packer').startup(function()
   end
   }
 
+
+
   -- Markdown preview
   -- Did not run on new macbook
   --use { 'iamcco/markdown-preview.nvim', ft = 'markdown', run = 'cd app && yarn install' }
-
-  -- wiki
-  --use'vimwiki/vimwiki'
+  -- install without yarn or npm
+  use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
 
   -- git diff in sign column
   use 'airblade/vim-gitgutter'
@@ -33,20 +38,17 @@ return require('packer').startup(function()
 
   -- colorschemes
   use 'Shatur/neovim-ayu'
-
-  -- indenting python properly
-  --use 'hynek/vim-python-pep8-indent'
+  use  "ellisonleao/gruvbox.nvim"
 
   -- proper folding for python
   use 'tmhedberg/SimpylFold'
-
 
   -- easy commenting out of code
   use 'scrooloose/nerdcommenter'
 
   -- prettier status line
-  use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
+  use 'vim-airline/vim-airline'
 
   -- LaTeX plugin
   use 'lervag/vimtex'
@@ -71,16 +73,10 @@ return require('packer').startup(function()
   use 'gennaro-tedesco/nvim-peekup'
 
   -- Move current selection up (down) with Alt-k (Alt-j)
-  --use 'matze/vim-move'
+  use 'matze/vim-move'
 
   --Cchange/add/delete `sourroundings`
   use 'tpope/vim-surround'
-
-  -- Better spell checking
-  --use 'rhysd/vim-grammarous'
-
-  -- Autoformatting
-  --use 'sbdchd/neoformat'
 
   -- NeoVim LpSP config
   use 'williamboman/mason.nvim'
