@@ -21,6 +21,10 @@ return require('packer').startup(function()
 
 
 
+local null_ls = require("null-ls")
+
+-- using register method
+null_ls.register({ autopep8 })
   -- Markdown preview
   -- Did not run on new macbook
   --use { 'iamcco/markdown-preview.nvim', ft = 'markdown', run = 'cd app && yarn install' }
@@ -31,14 +35,30 @@ return require('packer').startup(function()
     })
 
   -- git diff in sign column
-  use 'airblade/vim-gitgutter'
+  --use 'airblade/vim-gitgutter'
+  --use 'lewis6991/gitsigns.nvim'
+  use {
+  'lewis6991/gitsigns.nvim',
+  }
+
+  -- status line at the buttom
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
+  -- fancy tab line
+  use {'akinsho/bufferline.nvim', tag = "v2.*",
+      requires = 'kyazdani42/nvim-web-devicons'}
 
   -- git plugin (commiting, blame, diff, etc.)
   use 'tpope/vim-fugitive'
 
   -- colorschemes
   use 'Shatur/neovim-ayu'
-  use  "ellisonleao/gruvbox.nvim"
+  --use  "ellisonleao/gruvbox.nvim"
+  --use "savq/melange"
+  use 'navarasu/onedark.nvim'
 
   -- proper folding for python
   use 'tmhedberg/SimpylFold'
@@ -47,8 +67,8 @@ return require('packer').startup(function()
   use 'scrooloose/nerdcommenter'
 
   -- prettier status line
-  use 'vim-airline/vim-airline-themes'
-  use 'vim-airline/vim-airline'
+  --use 'vim-airline/vim-airline-themes'
+  --use 'vim-airline/vim-airline'
 
   -- LaTeX plugin
   use 'lervag/vimtex'
@@ -82,8 +102,7 @@ return require('packer').startup(function()
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'mfussenegger/nvim-lint'
-  use 'mhartington/formatter.nvim'
+  use 'jose-elias-alvarez/null-ls.nvim'
 
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -94,3 +113,5 @@ return require('packer').startup(function()
   use 'folke/zen-mode.nvim'
 
 end)
+
+

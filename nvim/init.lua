@@ -104,40 +104,77 @@ end
 --------------------------
 g.vimtex_view_method = 'skim'
 
+-- Status line
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {
+  },
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
+
+require("bufferline").setup{}
 
 ---------
 -- Colors
 ---------
---local theme = 'ayu'
---local theme = 'PaperColor'
---local theme = 'gruvebox'
---local airline_theme = 'papercolor'
---local airline_theme = 'gruvbox'
---vim.api.nvim_command('colorscheme ' .. theme)
---colorscheme = 'gruvbox'
+--require('onwdark').setup {
+    --style = 'warmer'
+--}
+--require('onedark').load()
 
-vim.highlight.create('Comment', {cterm='italic', gui='italic'}, false)
+--require('lualine').setup({
+  --options = {
+    --theme = 'onedark',
+  --},
+--})
 
--- setup must be called before loading the colorscheme
--- Default options:
-require("gruvbox").setup({
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = true,
-  strikethrough = true,
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "", -- can be "hard", "soft" or empty string
+require('ayu').setup({
   overrides = {
-              SignColumn = {bg = ""}
+    --Comment ={ italic = true }
+  }
+})
+
+require('lualine').setup({
+  options = {
+    theme = 'ayu',
   },
 })
-vim.cmd("colorscheme gruvbox")
-
+vim.cmd('colorscheme ayu')
 
 ------------
 -- Telescope
@@ -204,10 +241,60 @@ lspconfig.ltex.setup {
     }
 }
 
+
+--Makess diagnostics symbols nicer
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 function TelescopeOpen(fn)
     finders[fn]()
 end
 
+--Git sign
+require('gitsigns').setup {
+  signs = {
+    add          = {hl = ''   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = '', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = '', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = '', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = '', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+  watch_gitdir = {
+    interval = 1000,
+    follow_files = true
+  },
+  attach_to_untracked = true,
+  current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  current_line_blame_opts = {
+    virt_text = true,
+    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+    delay = 1000,
+    ignore_whitespace = false,
+  },
+  current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+  sign_priority = 6,
+  update_debounce = 100,
+  status_formatter = nil, -- Use default
+  max_file_length = 40000, -- Disable if file is longer than this (in lines)
+  preview_config = {
+    -- Options passed to nvim_open_win
+    border = 'single',
+    style = 'minimal',
+    relative = 'cursor',
+    row = 0,
+    col = 1
+  },
+  yadm = {
+    enable = false
+  },
+}
 
 
 --------------------------
@@ -287,7 +374,12 @@ require('nvim-peekup.config').on_keystroke["delay"] = '100ms'
 require('nvim-peekup.config').on_keystroke["autoclose"] = true
 require('nvim-peekup.config').on_keystroke["paste_reg"] = '"'
 
-
+-- Setup null_ls
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.formatting.autopep8,
+    },
+})
 
 
 -- Setup nvim-cmp.
@@ -354,6 +446,7 @@ U.map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
 U.map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 U.map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 U.map('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
+U.map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 
 --U.map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
 ---U.map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
@@ -365,8 +458,17 @@ U.map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 U.map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 U.map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 U.map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-U.map('n', '<leader>mp', '<cmd>!open -a "firefox" "%" <CR>')
+U.map('n', '<leader>gb', '<cmd>Gitsign blame_line<CR>')
 -- The following command requires plug-ins "nvim-telescope/telescope.nvim",
 -- "nvim-lua/plenary.nvim", and optionally "kyazdani42/nvim-web-devicons" for icon support
 vim.api.nvim_set_keymap('n', '<leader>dd', '<cmd>Telescope diagnostics<CR>',
     { noremap = true, silent = true })
+
+
+U.map('n', '<leader>mc', '<cmd>syntax match markdownError "\\w\\@<=\\w\\@="<CR>')
+U.map('n', '<leader>mp', '<cmd>MarkdownPreview<CR>')
+--vim.cmd('syntax match markdownError "\\w\@<=\\w\@="')
+
+-- Remove markdown syntax error
+--cmd syntax match markdownError "\w\@<=\w\@="
+--
