@@ -163,19 +163,97 @@ require("bufferline").setup{}
   --},
 --})
 
-require('ayu').setup({
-  overrides = {
-    --Comment ={ italic = true }
-  }
-})
+-- AYU start
+--require('ayu').setup({
+  --overrides = {
+    ----Comment ={ italic = true }
+  --}
+--})
 
-require('lualine').setup({
-  options = {
-    theme = 'ayu',
+--require('lualine').setup({
+  --options = {
+    --theme = 'ayu',
+  --},
+--})
+--vim.cmd('colorscheme ayu')
+-- AYU end
+--
+
+
+require('onenord').setup({
+  theme = nil, -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
+  borders = true, -- Split window borders
+  fade_nc = false, -- Fade non-current windows, making them more distinguishable
+  -- Style that is applied to various groups: see `highlight-args` for options
+  styles = {
+    comments = "italic",
+    strings = "NONE",
+    keywords = "NONE",
+    functions = "italic",
+    variables = "NONE",
+    diagnostics = "underline",
   },
+  disable = {
+    background = false, -- Disable setting the background color
+    cursorline = false, -- Disable the cursorline
+    eob_lines = false, -- Hide the end-of-buffer lines
+  },
+  -- Inverse highlight for different groups
+  inverse = {
+    match_paren = false,
+  },
+  custom_highlights = {
+  --LspDiagnosticsUnderlineError = { style = 'undercurl' },
+},
+  custom_colors = {}, -- Overwrite default colors
 })
-vim.cmd('colorscheme ayu')
 
+
+
+
+require("tokyonight").setup({
+  -- your configuration comes here
+  -- or leave it empty to use the default settings
+  style = "Moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+  transparent = false, -- Enable this to disable setting the background color
+  terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+  styles = {
+    -- Style to be applied to different syntax groups
+    -- Value is any valid attr-list value for `:help nvim_set_hl`
+    comments = { italic = true },
+    keywords = { italic = true },
+    functions = {},
+    variables = {},
+    -- Background styles. Can be "dark", "transparent" or "normal"
+    sidebars = "dark", -- style for sidebars, see below
+    floats = "dark", -- style for floating windows
+  },
+  sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+  day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+  hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+  dim_inactive = false, -- dims inactive windows
+  lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+
+  --- You can override specific color groups to use other groups or a hex color
+  --- function will be called with a ColorScheme table
+  ---@param colors ColorScheme
+  on_colors = function(colors) end,
+
+  --- You can override specific highlights to use other groups or a hex color
+  --- function will be called with a Highlights and ColorScheme table
+  ---@param highlights Highlights
+  ---@param colors ColorScheme
+  on_highlights = function(highlights, colors) end,
+})
+require('lualine').setup {
+  options = {
+    -- ... your lualine config
+    theme = 'onenord'
+    -- ... your lualine config
+  }
+}
+
+vim.cmd('colorscheme onenord')
 ------------
 -- Telescope
 ------------
@@ -241,6 +319,8 @@ lspconfig.ltex.setup {
     }
 }
 
+require'toggle_lsp_diagnostics'.init()
+
 
 --Makess diagnostics symbols nicer
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -256,45 +336,47 @@ end
 --Git sign
 require('gitsigns').setup {
   signs = {
-    add          = {hl = ''   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-    change       = {hl = '', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-    delete       = {hl = '', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    topdelete    = {hl = '', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    changedelete = {hl = '', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-  },
-  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-  watch_gitdir = {
-    interval = 1000,
-    follow_files = true
-  },
-  attach_to_untracked = true,
-  current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-  current_line_blame_opts = {
-    virt_text = true,
-    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-    delay = 1000,
-    ignore_whitespace = false,
-  },
-  current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-  sign_priority = 6,
-  update_debounce = 100,
-  status_formatter = nil, -- Use default
-  max_file_length = 40000, -- Disable if file is longer than this (in lines)
-  preview_config = {
-    -- Options passed to nvim_open_win
-    border = 'single',
-    style = 'minimal',
-    relative = 'cursor',
-    row = 0,
-    col = 1
-  },
-  yadm = {
-    enable = false
+    --add          = {hl = ''   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    --change       = {hl = '', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    --delete       = {hl = '', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    --topdelete    = {hl = '', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    --changedelete = {hl = '', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  --},
+  --signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+  --numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+  --linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+  --word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+  --watch_gitdir = {
+    --interval = 1000,
+    --follow_files = true
+  --},
+  --attach_to_untracked = true,
+  --current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  --current_line_blame_opts = {
+    --virt_text = true,
+    --virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+    --delay = 1000,
+    --ignore_whitespace = false,
+  --},
+  --current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+  --sign_priority = 6,
+  --update_debounce = 100,
+  --status_formatter = nil, -- Use default
+  --max_file_length = 40000, -- Disable if file is longer than this (in lines)
+  --preview_config = {
+    ---- Options passed to nvim_open_win
+    --border = 'single',
+    --style = 'minimal',
+    --relative = 'cursor',
+    --row = 0,
+    --col = 1
+  --},
+  --yadm = {
+    --enable = false
   },
 }
+
+require("neogit").setup{}
 
 
 --------------------------
@@ -458,7 +540,7 @@ U.map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 U.map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 U.map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 U.map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-U.map('n', '<leader>gb', '<cmd>Gitsign blame_line<CR>')
+U.map('n', '<space>b', '<cmd>Gitsign blame_line<CR>')
 -- The following command requires plug-ins "nvim-telescope/telescope.nvim",
 -- "nvim-lua/plenary.nvim", and optionally "kyazdani42/nvim-web-devicons" for icon support
 vim.api.nvim_set_keymap('n', '<leader>dd', '<cmd>Telescope diagnostics<CR>',

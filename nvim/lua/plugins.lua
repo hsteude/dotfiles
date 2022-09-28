@@ -37,9 +37,6 @@ null_ls.register({ autopep8 })
   -- git diff in sign column
   --use 'airblade/vim-gitgutter'
   --use 'lewis6991/gitsigns.nvim'
-  use {
-  'lewis6991/gitsigns.nvim',
-  }
 
   -- status line at the buttom
   use {
@@ -51,14 +48,18 @@ null_ls.register({ autopep8 })
   use {'akinsho/bufferline.nvim', tag = "v2.*",
       requires = 'kyazdani42/nvim-web-devicons'}
 
-  -- git plugin (commiting, blame, diff, etc.)
-  use 'tpope/vim-fugitive'
+  -- git plugins
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use {'lewis6991/gitsigns.nvim'}
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
   -- colorschemes
-  use 'Shatur/neovim-ayu'
+  --use 'Shatur/neovim-ayu'
   --use  "ellisonleao/gruvbox.nvim"
   --use "savq/melange"
-  use 'navarasu/onedark.nvim'
+  --use 'navarasu/onedark.nvim'
+  use 'folke/tokyonight.nvim'
+  use 'rmehri01/onenord.nvim'
 
   -- proper folding for python
   use 'tmhedberg/SimpylFold'
@@ -104,6 +105,9 @@ null_ls.register({ autopep8 })
   use 'neovim/nvim-lspconfig'
   use 'jose-elias-alvarez/null-ls.nvim'
 
+  -- lsp toggle
+  use 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
+  -- Auto completion
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/nvim-cmp'
