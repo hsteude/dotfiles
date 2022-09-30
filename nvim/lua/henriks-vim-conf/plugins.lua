@@ -50,6 +50,8 @@ return packer.startup(function(use)
 	-- Color schemes!!!!
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({ "rmehri01/onenord.nvim" }) -- Some colours :)
+	use({ "ellisonleao/gruvbox.nvim" })
+	use({ "Shatur/neovim-ayu" })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
@@ -75,7 +77,7 @@ return packer.startup(function(use)
 
 	-- Commnt Toggler
 	use({ "numToStr/Comment.nvim" })
-    -- use({'b3nj5m1n/kommentary'})
+	-- use({'b3nj5m1n/kommentary'})
 
 	-- Bufferline
 	use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
@@ -86,13 +88,16 @@ return packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
 
+	-- Starting Dashboard
+	use({ "goolord/alpha-nvim", requires = "kyazdani42/nvim-web-devicons" })
+
 	-- Git magic
 	use({ "lewis6991/gitsigns.nvim" })
 	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
-    -- Show keymappings
-    use({ "folke/which-key.nvim" })
+	-- Show keymappings
+	use({ "folke/which-key.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

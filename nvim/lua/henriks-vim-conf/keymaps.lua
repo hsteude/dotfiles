@@ -29,6 +29,6 @@ U.map("n", "H", ":bprevious<CR>")
 -- shortcut to replace highlighted section with paste register content
 U.map("v", "<leader>p", "_dP")
 -- insert breakpoint in python
-U.map("n", "<leader>b", "obreakpoint()<ESC>")
+U.map("n", "<leader>pb", "obreakpoint()<ESC>")
 -- Toggle explorer (overriden by nvimtree later but useful if not loaded)
 U.map("n", "<leader>e", "<cmd>Lex<CR>")

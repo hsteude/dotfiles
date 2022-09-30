@@ -45,3 +45,5 @@ gitsigns.setup({
 		enable = false,
 	},
 })
+
+U.map("n", "<leader>b", "<cmd>Gitsigns blame_line<CR>")

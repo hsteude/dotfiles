@@ -4,7 +4,9 @@ Mostly for python development and some TeX stuff. I use zsh as shell and nvim
 as text editor.
 
 ## Installation
-
+E.g. on a fresh ubuntu, you need:
+gcc+, npm, 
+node -v > 14
 Install necessary cmd tools
 ```shell
 brew install ripgrep neovim npm fzy git wget curl zsh gcc cowsay fortune lua tmux
