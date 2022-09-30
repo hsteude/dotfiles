@@ -1,6 +1,7 @@
 # dotfiles, dotfiles, dotfiles
 
-Mostly for python development and some tex stuff. I use zsh as shell and nvim as text editor.
+Mostly for python development and some TeX stuff. I use zsh as shell and nvim
+as text editor.
 
 ## Installation
 
@@ -18,12 +19,6 @@ Create symlinks
 sh ~/dotfiles/create_symlinks.sh
 ```
 
-Install Packer
-```shell
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-
 Install zsh highlighting
 ```shell
 # get syntax highlighting
@@ -36,9 +31,6 @@ Install pure promt
 npm install --global pure-prompt
 brew install pure
 ```
-
-
-
 
 Cargo and node if needed:
 ```
