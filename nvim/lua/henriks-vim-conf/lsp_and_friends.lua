@@ -63,6 +63,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.autopep8,
 		null_ls.builtins.diagnostics.flake8,
+		null_ls.builtins.formatting.prettier,
 	},
 })
 

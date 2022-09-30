@@ -29,7 +29,7 @@ whichkey.register({
 		n = { "<cmd>enew<cr>", "New File" },
 	},
 	["<leader>l"] = {
-		name = "Files",
+		name = "LSP",
 		d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
 		D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaraion" },
 		h = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
@@ -39,14 +39,11 @@ whichkey.register({
 		t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 		a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
-		s = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
-		e = {
-			name = "Diagnostics",
-			p = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Go to previous" },
-			n = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Go to next" },
-			l = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "Set loclist" },
-			s = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Show diagnostics in a floating window" },
-		},
+		o = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
+		p = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Go to previous" },
+		n = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Go to next" },
+		l = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "Set loclist" },
+		e = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Show diagnostics in a floating window" },
 	},
 	["<leader>c"] = {
 		name = "Comments",
@@ -57,5 +54,6 @@ whichkey.register({
 		o = { "<cmd>DiffviewOpen<CR>", "Open Diffview" },
 		c = { "<cmd>DiffviewClose<CR>", "Close Diffview" },
 		h = { "<cmd>DiffviewFileHistory<CR>", "Open file history tool" },
+		b = { "<cmd>Gitsigns blame_line<CR>", "Show Blame info for line" }
 	},
 }, opts)
