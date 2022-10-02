@@ -9,4 +9,4 @@ ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 mkdir -p ~/.ipython/profile_default
 ln -s ~/dotfiles/ipython_config.py ~/.ipython/profile_default/ipython_config.py
-ln -s ~/dotfiles/keymap.c ~/qmk_firmware/keyboards/planck/keymaps/hsteude/keymap.c
+# ln -s ~/dotfiles/keymap.c ~/qmk_firmware/keyboards/planck/keymaps/hsteude/keymap.c
