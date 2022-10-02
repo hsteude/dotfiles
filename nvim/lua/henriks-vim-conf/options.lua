@@ -26,6 +26,8 @@ local global_opts = {
 	backspace = "indent,eol,start",
 	completeopt = "menuone,noselect",
 	formatoptions = "j,r,o,q", -- see `help fo-table` for meaning
+    -- ls = 0, -- 
+    -- ch = 0 -- command height  (works only from version 0.8)
 }
 
 local win_opts = {

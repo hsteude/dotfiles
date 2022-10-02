@@ -3,7 +3,7 @@
 -- like the string ColorSchme
 -- We have a global variable here, since we also use it for the plugin lualine
 -- later on
-local colorscheme = "ayu" -- gloab variable also used in lualine later
+local colorscheme = "material" -- gloab variable also used in lualine later
 
 require("henriks-vim-conf.colorschemes." .. colorscheme)
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)

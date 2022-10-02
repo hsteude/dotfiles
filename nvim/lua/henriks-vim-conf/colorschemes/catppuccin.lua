@@ -1,4 +1,4 @@
-local catppuccin_status_ok, catppuccin = pcall(require, "cmp")
+local catppuccin_status_ok, catppuccin = pcall(require, "catppuccin")
 if not catppuccin_status_ok then
 	vim.notify("catppuccin not loaded")
 	return
