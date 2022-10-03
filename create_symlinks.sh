@@ -1,4 +1,5 @@
 #!/bin/bash
+mkdir -p ~/.config
 ln -s ~/dotfiles/.aliases ~/.aliases
 ln -s ~/dotfiles/flake8 ~/.config/flake8
 ln -s ~/dotfiles/nvim ~/.config/nvim

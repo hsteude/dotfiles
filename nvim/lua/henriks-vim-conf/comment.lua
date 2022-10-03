@@ -14,14 +14,14 @@ comment.setup({
 	---LHS of toggle mappings in NORMAL mode
 	toggler = {
 		---Line-comment toggle keymap
-		line = "<leader>cc",
+		line = "<leader>c<space>",
 		---Block-comment toggle keymap
 		block = "<leader>bc",
 	},
 	---LHS of operator-pending mappings in NORMAL and VISUAL mode
 	opleader = {
 		---Line-comment keymap
-		line = "<leader>cc",
+		line = "<leader>cc<space>",
 		---Block-comment keymap
 		block = "<leader>cb",
 	},
