@@ -6,7 +6,10 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/zathura ~/.config/zathura
 ln -s ~/dotfiles/.pdbrc.py ~/.pbdrc.py
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+rm ~/.zshrz
 ln -s ~/dotfiles/.zshrc ~/.zshrc
+rm ~/.bashrc
+ln -s ~/dotfiles/.basrc ~/.basrc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 mkdir -p ~/.ipython/profile_default
 ln -s ~/dotfiles/ipython_config.py ~/.ipython/profile_default/ipython_config.py

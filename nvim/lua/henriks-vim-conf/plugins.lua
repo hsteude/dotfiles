@@ -52,7 +52,7 @@ return packer.startup(function(use)
 	use({ "rmehri01/onenord.nvim" }) -- Some colours :)
 	use({ "ellisonleao/gruvbox.nvim" })
 	use({ "Shatur/neovim-ayu" })
-    use({ "marko-cerovac/material.nvim" })
+	use({ "marko-cerovac/material.nvim" })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
@@ -70,11 +70,13 @@ return packer.startup(function(use)
 		"jose-elias-alvarez/null-ls.nvim",
 	})
 
+	use({ "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim" })
+
 	-- Nice syntax highliting in pretty much all languages
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
-    -- Surround!!
-	use({"kylechui/nvim-surround"})
+	-- Surround!!
+	use({ "kylechui/nvim-surround" })
 
 	-- Tree
 	use({ "kyazdani42/nvim-tree.lua" })
