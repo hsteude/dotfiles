@@ -3,17 +3,15 @@
 Mostly for python development and some TeX stuff. I use zsh as shell and nvim
 as text editor.
 
-## Installation
+## Installation (asuming mac os for now)
 E.g. on a fresh ubuntu, you need:
 gcc+, npm, 
 node -v > 14
 Install necessary cmd tools
 ```shell
-brew install ripgrep neovim npm fzy git wget curl zsh gcc cowsay fortune lua tmux
+brew install ripgrep neovim npm fzy git wget curl zsh gcc lua tmux
 brew install --cask iterm2 firefow amethyst
 cd; git clone https://github.com/hsteude/dotfiles.git
-for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done
-git checkout mac_os
 ```
 
 Create symlinks
@@ -21,18 +19,12 @@ Create symlinks
 sh ~/dotfiles/create_symlinks.sh
 ```
 
-Install zsh highlighting
-```shell
-# get syntax highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+Install starship prompt
+```sh
+curl -sS https://starship.rs/install.sh | sh
 ```
 
-Install pure promt
-```shell
-npm install --global pure-prompt
-brew install pure
-```
+
 
 Cargo and node if needed:
 ```

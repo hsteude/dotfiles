@@ -72,4 +72,4 @@ material.setup({
 })
 
 vim.g.material_style = "darker"
--- vim.g.material_style = "lighte"
+-- vim.g.material_style = "lighter"

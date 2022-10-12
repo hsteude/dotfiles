@@ -1,0 +1,8 @@
+[nodejs]
+disabled = true
+
+[c]
+disabled = true
+
+[python]
+disabled = true

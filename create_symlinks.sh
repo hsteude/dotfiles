@@ -4,6 +4,7 @@ ln -s ~/dotfiles/.aliases ~/.aliases
 ln -s ~/dotfiles/flake8 ~/.config/flake8
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/zathura ~/.config/zathura
+ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
 ln -s ~/dotfiles/.pdbrc.py ~/.pbdrc.py
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 rm ~/.zshrz

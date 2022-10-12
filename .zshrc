@@ -7,8 +7,6 @@ export PATH=~/.local/bin:$PATH
 
 
 fpath+=/opt/homebrew/share/zsh/site-functions
-autoload -U promptinit; promptinit
-prompt pure
 
  # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
@@ -37,9 +35,6 @@ export PATH=$PATH:$CARGO_PATH
 # ipbd instead of pdb by default breakpoint
 export PYTHONBREAKPOINT=ipdb.set_trace
 
-# very important:
-fortune | cowsay
-
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
@@ -52,7 +47,7 @@ bindkey "^?" backward-delete-char
 
 
 # Needs to be source at the end of this file!!
-source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
@@ -64,7 +59,7 @@ if [ -f '/Users/henrik/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/henrik/g
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/henrik/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/henrik/google-cloud-sdk/completion.zsh.inc'; fi
 
-source /Users/henrik/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /Users/henrik/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -88,22 +83,4 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export TERM=xterm-256color
 
 
-# STARTUP
-zstyle :omz:plugins:ssh-agent identities id_rsa id_github
-
-# stolen from https://github.com/geier/dotfiles/blob/master/.zshrc
-# set the terminal's title to the current command {{{
-# despite its name, it works in most terminals
-autoload -Uz add-zsh-hook
-function xterm_title_precmd () {
-	print -Pn '\e]0;%~ \a'
-}
-function xterm_title_preexec () {
-	print -Pn '\e]0;%~: '
-	print -n "${(q)1}\a"
-}
-if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*) ]]; then
-	add-zsh-hook -Uz precmd xterm_title_precmd
-	add-zsh-hook -Uz preexec xterm_title_preexec
-fi
-# }}}
+eval "$(starship init zsh)"
