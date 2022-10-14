@@ -57,4 +57,9 @@ whichkey.register({
 		h = { "<cmd>DiffviewFileHistory<CR>", "Open file history tool" },
 		b = { "<cmd>Gitsigns blame_line<CR>", "Show Blame info for line" },
 	},
+	["<leader>a"] = {
+		name = "TTYD-Copy-Mode",
+		a = { "<cmd>set nonumber norelativenumber mouse-=a<CR>", "Turn off line numbers and mouse suport" },
+		s = { "<cmd>set number relativenumber mouse+=a<CR>", "And turn all back on" },
+	},
 }, opts)

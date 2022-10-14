@@ -32,3 +32,6 @@ U.map("v", "<leader>p", "_dP")
 U.map("n", "<leader>pb", "obreakpoint()<ESC>")
 -- Toggle explorer (overriden by nvimtree later but useful if not loaded)
 U.map("n", "<leader>e", "<cmd>Lex<CR>")
+-- Special command to get rid of line numbers and mouse mode
+U.map("n", "<leader>aa", "<cmd>set nonumber norelativenumber mouse-=a<CR>")
+U.map("n", "<leader>as", "<cmd>set number relativenumber mouse+=a<CR>")
