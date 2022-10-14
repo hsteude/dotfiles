@@ -59,7 +59,7 @@ whichkey.register({
 	},
 	["<leader>a"] = {
 		name = "TTYD-Copy-Mode",
-		a = { "<cmd>set nonumber norelativenumber mouse-=a<CR>", "Turn off line numbers and mouse suport" },
-		s = { "<cmd>set number relativenumber mouse+=a<CR>", "And turn all back on" },
+		a = { "<cmd>set nonumber norelativenumber mouse-=a scl=no<CR>", "Turn off line numbers and mouse suport" },
+		s = { "<cmd>set number relativenumber mouse+=a scl=yes<CR>", "And turn all back on" },
 	},
 }, opts)
