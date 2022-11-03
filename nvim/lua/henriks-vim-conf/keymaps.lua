@@ -15,7 +15,6 @@ end
 -- Mappings which don't require plugins
 -------------------------------------------
 -- don't use ex mode, use Q for formatting (wrapping text in new lines)
-U.map("n", "Q", "gq}")
 -- mapping to write file that needs sudo privileges
 U.map("n", "w!!", "%!sudo tee > /dev/null %")
 -- make Y work as C or D,

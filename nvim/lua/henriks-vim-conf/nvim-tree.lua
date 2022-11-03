@@ -21,6 +21,11 @@ nvim_tree.setup({
 	renderer = {
 		root_folder_modifier = ":t",
 		icons = {
+            show = {
+            file = true,
+            folder = true,
+            folder_arrow = true,
+            git = true,},
 			glyphs = {
 				default = "",
 				symlink = "",

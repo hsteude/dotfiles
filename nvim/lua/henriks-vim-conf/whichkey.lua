@@ -35,7 +35,7 @@ whichkey.register({
 		h = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
 		i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
 		k = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Help" },
-		f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format buffer" },
+		f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format buffer" },
 		-- t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 		a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },

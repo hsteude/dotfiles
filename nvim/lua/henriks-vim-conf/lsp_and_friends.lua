@@ -32,7 +32,7 @@ mason_lspconfig.setup_handlers({
 		lspconfig.ltex.setup({
 			settings = {
 				ltex = {
-					language = "de",
+					language = "en",
 				},
 			},
 		})
@@ -73,7 +73,7 @@ vim.diagnostic.config({
 })
 
 --Makess diagnostics symbols nicer
-local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+local signs = { Error = "e", Warn = "w", Hint = "h", Info = "i" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -85,12 +85,14 @@ U.map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>")
 U.map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
 U.map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 U.map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+U.map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+U.map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
+U.map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
+
+
 -- These won't work anymore, since <space> is my <leader> now...
 -- U.map("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
 -- U.map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 -- U.map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
 -- U.map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
 -- U.map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-U.map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-U.map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
-U.map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")

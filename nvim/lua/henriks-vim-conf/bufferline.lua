@@ -4,4 +4,8 @@ if not bl_status_ok then
 	return
 end
 
-bufferline.setup({})
+bufferline.setup({
+	options = {
+		separator_style = "thin",
+	},
+})
