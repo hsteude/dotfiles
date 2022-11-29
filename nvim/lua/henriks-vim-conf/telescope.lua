@@ -28,6 +28,7 @@ telescope.setup({
 
 -- Ctrl-p = fuzzy finder and stuff
 U.map("n", "<C-P>", "<CMD>lua require('telescope.builtin').find_files({hidden = true})<CR>")
+U.map("n", "<leader>fo", "<CMD>Telescope buffers<CR>")
 U.map("n", "<leader>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>")
 U.map("n", "<leader>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>")
 U.map("n", "<leader>fb", "<CMD>lua require('telescope.builtin').buffers()<CR>")
