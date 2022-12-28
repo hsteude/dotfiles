@@ -52,6 +52,11 @@ bindkey "^?" backward-delete-char
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
 
+# Load Git completion
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
+
+autoload -Uz compinit && compinit
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/henrik/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/henrik/google-cloud-sdk/path.zsh.inc'; fi
