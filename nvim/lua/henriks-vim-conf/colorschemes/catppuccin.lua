@@ -5,10 +5,10 @@ if not catppuccin_status_ok then
 end
 
 require("catppuccin").setup({
-    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    flavour = "macchiato", -- latte, frappe, macchiato, mocha
     background = { -- :h background
         light = "latte",
-        dark = "mocha",
+        dark = "macchiato",
     },
     compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
     transparent_background = false,
@@ -40,6 +40,7 @@ require("catppuccin").setup({
         nvimtree = true,
         telescope = true,
         treesitter = true,
+        bufferline = true,
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
 })
