@@ -114,6 +114,13 @@ return packer.startup(function(use)
 		end,
 	})
 
+    use({"xiyaowong/nvim-transparent"})
+
+
+
+
+
+
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",

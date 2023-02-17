@@ -20,3 +20,4 @@ alias wiki='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Wiki && 
 alias dotfiles='cd ~/dotfiles && nvim .'
 alias gist='git status'
 alias githist='git log --graph --abbrev-commit --decorate --date=relative --all'
+alias min='open /Applications/Min.app --args --ignore-certificate-errors'
