@@ -49,10 +49,11 @@ return packer.startup(function(use)
 
 	-- Color schemes!!!!
 	use({ "catppuccin/nvim", as = "catppuccin" })
-	use({ "rmehri01/onenord.nvim" }) -- Some colours :)
+	-- use({ "rmehri01/onenord.nvim" }) -- Some colours :)
 	use({ "ellisonleao/gruvbox.nvim" })
 	use({ "Shatur/neovim-ayu" })
     use({ "marko-cerovac/material.nvim" })
+    use({ "savq/melange-nvim" })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
@@ -86,7 +87,9 @@ return packer.startup(function(use)
 	-- use({'b3nj5m1n/kommentary'})
 
 	-- Bufferline
-	use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
+	use({ "akinsho/bufferline.nvim",
+        requires = "kyazdani42/nvim-web-devicons"
+    })
 
 	-- Lualine
 	use({
@@ -95,7 +98,9 @@ return packer.startup(function(use)
 	})
 
 	-- Starting Dashboard
-	use({ "goolord/alpha-nvim", requires = "kyazdani42/nvim-web-devicons" })
+	use({ "goolord/alpha-nvim",
+        requires = "kyazdani42/nvim-web-devicons"
+    })
 
 	-- Git magic
 	use({ "lewis6991/gitsigns.nvim" })

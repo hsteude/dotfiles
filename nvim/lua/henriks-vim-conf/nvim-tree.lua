@@ -13,7 +13,6 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
-    open_on_setup = true,
 	update_focused_file = {
 		enable = true,
 		update_cwd = true,
@@ -40,12 +39,12 @@ nvim_tree.setup({
 					symlink_open = "",
 				},
 				git = {
-					unstaged = "",
+					unstaged = "US",
 					staged = "S",
-					unmerged = "",
+					unmerged = "M",
 					renamed = "➜",
 					untracked = "U",
-					deleted = "",
+					deleted = "D",
 					ignored = "◌",
 				},
 			},
@@ -55,10 +54,10 @@ nvim_tree.setup({
 		enable = true,
 		show_on_dirs = true,
 		icons = {
-			hint = "",
-			info = "",
-			warning = "",
-			error = "",
+			hint = "h",
+			info = "i",
+			warning = "w",
+			error = "e",
 		},
 	},
 	view = {
@@ -75,3 +74,10 @@ nvim_tree.setup({
 })
 
 U.map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
+local function open_nvim_tree()
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
+end
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+

@@ -36,19 +36,7 @@ mason_lspconfig.setup_handlers({
 				},
 			},
 		})
-	end,
-	["sumneko_lua"] = function()
-		lspconfig.sumneko_lua.setup({
-			settings = {
-				Lua = {
-					diagnostics = {
-						-- Get the language server to recognize the `vim` global
-						globals = { "vim" },
-					},
-				},
-			},
-		})
-	end,
+	end
 })
 
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
