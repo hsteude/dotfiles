@@ -38,15 +38,15 @@ nvim_tree.setup({
 					symlink = "",
 					symlink_open = "",
 				},
-				git = {
-					unstaged = "U",
-					staged = "S",
-					unmerged = "M",
-					renamed = "➜",
-					untracked = "U",
-					deleted = "D",
-					ignored = "◌",
-				},
+                git = {
+                  unstaged = "✗",
+                  staged = "✓",
+                  unmerged = "",
+                  renamed = "➜",
+                  untracked = "★",
+                  deleted = "",
+                  ignored = "◌",
+                },
 			},
 		},
 	},
@@ -74,10 +74,24 @@ nvim_tree.setup({
 })
 
 U.map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
-local function open_nvim_tree()
+
+local function open_nvim_tree(data)
+
+  -- buffer is a directory
+  local directory = vim.fn.isdirectory(data.file) == 1
+
+  if not directory then
+    return
+  end
+
+  -- change to the directory
+  vim.cmd.cd(data.file)
 
   -- open the tree
   require("nvim-tree.api").tree.open()
 end
--- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
