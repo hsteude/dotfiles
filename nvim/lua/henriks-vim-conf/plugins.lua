@@ -49,7 +49,7 @@ return packer.startup(function(use)
 
 	-- Color schemes!!!!
 	use({ "catppuccin/nvim", as = "catppuccin" })
-	-- use({ "rmehri01/onenord.nvim" }) -- Some colours :)
+	use({ "rmehri01/onenord.nvim" }) -- Some colours :)
 	use({ "ellisonleao/gruvbox.nvim" })
 	use({ "Shatur/neovim-ayu" })
     use({ "marko-cerovac/material.nvim" })

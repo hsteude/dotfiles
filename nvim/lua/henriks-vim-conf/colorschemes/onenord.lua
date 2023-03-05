@@ -15,7 +15,7 @@ onenord.setup({
 		keywords = "NONE",
 		functions = "italic",
 		variables = "NONE",
-		diagnostics = "underline",
+		diagnostics = "undercurl",
 	},
 	disable = {
 		background = false, -- Disable setting the background color
