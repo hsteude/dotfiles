@@ -40,7 +40,7 @@ comment.setup({
 		---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
 		basic = true,
 		---Extra mapping; `gco`, `gcO`, `gcA`
-		extra = true,
+		extra = false,
 	},
 	---Function to call before (un)comment
 	pre_hook = nil,

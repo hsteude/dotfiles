@@ -32,7 +32,7 @@ mason_lspconfig.setup_handlers({
 		lspconfig.ltex.setup({
 			settings = {
 				ltex = {
-					language = "en",
+					language = "de",
 				},
 			},
 		})
@@ -56,7 +56,8 @@ null_ls.setup({
 
 -- don't show diagnostics in virtual text!
 vim.diagnostic.config({
-	virtual_text = false,
+	virtual_text = true,
+	underline = false,
 })
 
 --Makess diagnostics symbols nicer

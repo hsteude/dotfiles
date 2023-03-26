@@ -13,8 +13,8 @@ rm ~/.bashrc
 ln -s ~/dotfiles/.basrc ~/.basrc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 
-mkdir -p ~/.terminfo/x
-cp ~/dotfiles/xterm-kitty ~/.terminfo/x/
+# mkdir -p ~/.terminfo/x
+# cp ~/dotfiles/xterm-kitty ~/.terminfo/x/
 
 mkdir -p ~/.ipython/profile_default
 ln -s ~/dotfiles/ipython_config.py ~/.ipython/profile_default/ipython_config.py
