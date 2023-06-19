@@ -32,7 +32,7 @@ mason_lspconfig.setup_handlers({
 		lspconfig.ltex.setup({
 			settings = {
 				ltex = {
-					language = "de",
+					language = "en",
 				},
 			},
 		})

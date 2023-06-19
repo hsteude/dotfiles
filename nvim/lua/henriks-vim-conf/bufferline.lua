@@ -7,5 +7,11 @@ end
 bufferline.setup({
 	options = {
 		separator_style = "thin",
+		offsets = {
+			filetype = "NvimTree",
+			text = "EXPLORER",
+			text_align = "center",
+			-- separator = true,
+		},
 	},
 })

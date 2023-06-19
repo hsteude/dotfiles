@@ -62,4 +62,7 @@ whichkey.register({
 		a = { "<cmd>set nonumber norelativenumber mouse-=a scl=no<CR>", "Turn off line numbers and mouse suport" },
 		s = { "<cmd>set number relativenumber mouse+=a scl=yes<CR>", "And turn all back on" },
 	},
+	["<leader>m"] = {
+         "<cmd>!make<CR>", "Execute make file in this directory" 
+	},
 }, opts)
