@@ -43,7 +43,7 @@ bindkey "^?" backward-delete-char
 
 
 # Without this line conda shows a weird behaviour in tmux
-#[[ -z $TMUX ]] || conda deactivate; conda activate base
+# [[ -z $TMUX ]] || conda deactivate; conda activate base
 
 
 # Needs to be source at the end of this file!!
@@ -80,7 +80,8 @@ unset __conda_setup
 
 
 
-export PATH="$HOME/.poetry/bin:$PATH"
+# export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export TERM=xterm-256color
 # export TERM=xterm-kitty

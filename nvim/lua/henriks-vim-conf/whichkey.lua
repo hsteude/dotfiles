@@ -65,4 +65,7 @@ whichkey.register({
 	["<leader>m"] = {
          "<cmd>!make<CR>", "Execute make file in this directory" 
 	},
+    ["<leader>d"] = {
+        "<cmd>NoiceDismiss<CR>", "Dismiss Noice messages"
+    },
 }, opts)
