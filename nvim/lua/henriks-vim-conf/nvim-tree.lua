@@ -64,6 +64,12 @@ nvim_tree.setup({
 		width = 30,
 		side = "left",
 	},
+    filters = {
+        dotfiles = false,
+        git_clean = false,
+        no_buffer = false,
+  },
+  git = {ignore = false},
 })
 
 U.map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
