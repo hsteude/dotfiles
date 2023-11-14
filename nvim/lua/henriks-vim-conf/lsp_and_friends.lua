@@ -28,15 +28,6 @@ mason_lspconfig.setup_handlers({
 
 	-- Next, you can provide targeted overrides for specific servers.
 	-- Here ltex and sumneko_lua
-	["ltex"] = function()
-		lspconfig.ltex.setup({
-			settings = {
-				ltex = {
-					language = "en",
-				},
-			},
-		})
-	end
 })
 
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
@@ -56,7 +47,7 @@ null_ls.setup({
 
 -- don't show diagnostics in virtual text!
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = false,
 	underline = false,
 })
 

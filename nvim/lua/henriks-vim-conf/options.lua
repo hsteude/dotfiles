@@ -26,9 +26,11 @@ local global_opts = {
 	backspace = "indent,eol,start",
 	completeopt = "menuone,noselect",
 	formatoptions = "j,r,o,q", -- see `help fo-table` for meaning
-    scrolloff = 8,
-    -- ls = 0, -- 
-    -- ch = 0 -- command height  (works only from version 0.8)
+	scrolloff = 8,
+	spell = true,
+	spelllang = "en_us",
+	-- ls = 0, --
+	-- ch = 0 -- command height  (works only from version 0.8)
 }
 
 local win_opts = {
@@ -39,7 +41,7 @@ local win_opts = {
 	foldexpr = "nvim_treesitter#foldexpr()",
 	foldenable = true,
 	foldlevel = 10,
-	colorcolumn = "80",
+	-- colorcolumn = "80",
 }
 
 local buf_opts = {
