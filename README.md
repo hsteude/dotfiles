@@ -36,5 +36,10 @@ brew install node
 
 ```
 
+## If on mac os, tmux-256color terminfo needs to be installed
+```sh
+curl -LO https://invisible-island.net/datafiles/current/terminfo.src.gz && gunzip terminfo.src.gz
+/usr/bin/tic -xe tmux-256color terminfo.src
+```
 
 
