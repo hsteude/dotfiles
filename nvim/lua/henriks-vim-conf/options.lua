@@ -71,3 +71,11 @@ end
 
 vim.g.mapleader = " "
 vim.cmd([[set iskeyword+=-]])
+
+
+-- don't show diagnostics in virtual text!
+vim.diagnostic.config({
+	virtual_text = false,
+	underline = false,
+})
+
