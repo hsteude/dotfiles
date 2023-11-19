@@ -83,7 +83,7 @@ unset __conda_setup
 # export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export TERM=xterm-256color
+export TERM=tmux-256color
 # export TERM=xterm-kitty
 
 
