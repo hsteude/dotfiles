@@ -10,7 +10,7 @@ ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 rm ~/.zshrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 rm ~/.bashrc
-ln -s ~/dotfiles/.basrc ~/.basrc
+ln -s ~/dotfiles/.bashrc ~/.bashrc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 
 # mkdir -p ~/.terminfo/x
