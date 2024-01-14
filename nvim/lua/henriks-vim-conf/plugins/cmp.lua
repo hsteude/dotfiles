@@ -35,6 +35,7 @@ return {
     -- dependencies are always lazy-loaded unless specified otherwise
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-path",
         "hrsh7th/cmp-buffer",
     },
     opts = opts,
@@ -59,8 +60,8 @@ return {
                     vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
                     vim_item.menu = ({
                         nvim_lsp = "[LSP]",
-                        buffer = "[Buffer]",
                         path = "[Path]",
+                        buffer = "[Buffer]",
                     })[entry.source.name]
                     return vim_item
                 end,
