@@ -61,26 +61,9 @@ if [ -f '/Users/henrik/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/henrik/g
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/henrik/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/henrik/google-cloud-sdk/completion.zsh.inc'; fi
 
-# source /Users/henrik/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
 
 # export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export TERM=tmux-256color

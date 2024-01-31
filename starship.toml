@@ -13,6 +13,10 @@ disabled = true
 [container]
 disabled = true
 
+[kubernetes]
+disabled = false
+# format = '[$context( \($namespace\))]($style) '
+
 [username]
 format = '[$user]($style) '
 disabled = false
