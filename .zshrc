@@ -1,6 +1,12 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+HISTFILE=$HOME/.zsh_history
+SAVEHIST=65536
+HISTSIZE=100000
+DIRSTACKSIZE=10
+setopt SHARE_HISTORY
+
 # Path to brew
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=~/.local/bin:$PATH

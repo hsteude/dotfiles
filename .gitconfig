@@ -1,9 +1,16 @@
 [user]
 	name = hsteude
-	email = henrik.steude@gmail.com
+	email = henrik.steude@prokube.ai
+	signingkey = 3B665D19748D76C0
 [core]
 	editor = nvim
 [init]
 	defaultBranch = main
 [http]
 	sslVerify = false
+[merge]
+	ff = false
+[pull]
+	rebase = true
+[http "https://gitlab.kiss.space.unibw-hamburg.de"]
+	sslCAInfo = ./git-mycompany-com.pem
