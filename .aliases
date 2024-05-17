@@ -33,4 +33,3 @@ alias kc='KUBECONFIG_SELECTED=$(find ~/.kube/*.kubeconfig -type f -exec basename
 alias kn='kubectl config set-context --current --namespace=$(kubectl get ns --no-headers -o custom-columns=":metadata.name" | fzf)'
 alias knu="kubectl config set-context --current --namespace=\"\""  # unset
 alias k=kubectl
-alias python=python3.12
