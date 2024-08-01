@@ -13,4 +13,3 @@ vim.opt.rtp:prepend(lazypath)
 
 
 require("lazy").setup("henriks-vim-conf.plugins")
-vim.cmd.colorscheme "kanagawa"
