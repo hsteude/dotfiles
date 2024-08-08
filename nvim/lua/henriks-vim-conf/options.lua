@@ -79,3 +79,5 @@ vim.diagnostic.config({
 	underline = false,
 })
 
+
+vim.cmd("colorscheme kanagawa")
