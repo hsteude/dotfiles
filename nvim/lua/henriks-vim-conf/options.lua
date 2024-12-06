@@ -69,7 +69,6 @@ for k, v in pairs(win_opts) do
 	vim.wo[k] = v
 end
 
-vim.g.mapleader = " "
 vim.cmd([[set iskeyword+=-]])
 
 

@@ -1,3 +1,4 @@
+vim.g.mapleader = " "
 require "henriks-vim-conf.lazy"
 require "henriks-vim-conf.options"
 require "henriks-vim-conf.keymaps"
