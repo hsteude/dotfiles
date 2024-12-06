@@ -12,5 +12,3 @@
 	ff = false
 [pull]
 	rebase = true
-[http "https://gitlab.kiss.space.unibw-hamburg.de"]
-	sslCAInfo = ./git-mycompany-com.pem
