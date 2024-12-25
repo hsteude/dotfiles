@@ -7,6 +7,7 @@ ln -s ~/dotfiles/zathura ~/.config/zathura
 ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
 ln -s ~/dotfiles/.pdbrc.py ~/.pbdrc.py
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/.zsh_private ~/.zsh_private
 rm ~/.zshrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 rm ~/.bashrc
