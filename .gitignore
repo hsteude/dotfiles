@@ -2,3 +2,4 @@
 tags
 .netrwhist
 nvim/plugin/packer_compiled.lua
+.zsh_private

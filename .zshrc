@@ -76,10 +76,14 @@ export TERM=tmux-256color
 # export TERM=xterm-kitty
 
 
-# Try to use starship prompt if available
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"
 else
     # Simple fallback prompt showing username@hostname and current directory
     PROMPT='%F{green}%n@%m%f %F{blue}%~%f %# '
+fi
+
+# Load private environment variables
+if [ -f "$HOME/.zsh_private" ]; then
+    source "$HOME/.zsh_private"
 fi
