@@ -45,6 +45,10 @@ wk.add({
   { "<leader>ha", "<cmd>set nonumber norelativenumber mouse-=a scl=no<CR>", desc = "Turn off line numbers and mouse support" },
   { "<leader>hs", "<cmd>set number relativenumber mouse+=a scl=yes<CR>", desc = "And turn all back on" },
   { "<leader>m", "<cmd>!make<CR>", desc = "Execute make file in this directory" },
-  { "<C-l>", ":nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>:NoiceDismiss<CR>", desc = "..." },
+  { "<C-l>", ":nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>", desc = "..." },
+  { "<leader>s", group = "Spelllang" },
+  { "<leader>sd", "<cmd>setlocal spell spelllang=de<CR>", desc = "Set spellcheck to German" },
+  { "<leader>se", "<cmd>setlocal spell spelllang=en<CR>", desc = "Set spellcheck to English" },
+  { "<leader>so", "<cmd>setlocal nospell<CR>", desc = "Turn off spellcheck" },
 })
 
