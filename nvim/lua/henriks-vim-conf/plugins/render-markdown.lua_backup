@@ -1,0 +1,8 @@
+-- return {
+--     'MeanderingProgrammer/render-markdown.nvim',
+--     enable = false,
+--     opts = {
+--         file_types = { "markdown", "Avante" },
+--     },
+--     ft = { "markdown", "Avante", "python" },
+-- }
