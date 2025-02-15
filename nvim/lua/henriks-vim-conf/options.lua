@@ -80,3 +80,4 @@ vim.diagnostic.config({
 
 
 vim.cmd("colorscheme rose-pine")
+-- vim.cmd("set background=light")
