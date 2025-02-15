@@ -87,3 +87,5 @@ fi
 if [ -f "$HOME/.zsh_private" ]; then
     source "$HOME/.zsh_private"
 fi
+
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
