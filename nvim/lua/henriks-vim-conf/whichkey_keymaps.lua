@@ -50,5 +50,10 @@ wk.add({
   { "<leader>sd", "<cmd>setlocal spell spelllang=de<CR>", desc = "Set spellcheck to German" },
   { "<leader>se", "<cmd>setlocal spell spelllang=en<CR>", desc = "Set spellcheck to English" },
   { "<leader>so", "<cmd>setlocal nospell<CR>", desc = "Turn off spellcheck" },
+  { "<leader>y", group = "Clipboard" },
+  { "<leader>yy", '"+y', desc = "Copy line to system clipboard" },
+  { "<leader>yw", '"+yw', desc = "Copy word to system clipboard" },
+  { "<leader>yiw", '"+yiw', desc = "Copy inner word to system clipboard" },
+  { "<leader>y$", '"+y$', desc = "Copy to end of line to system clipboard" },
+  { "<leader>y", '"+y', mode = "v", desc = "Copy selection to system clipboard" },
 })
-
