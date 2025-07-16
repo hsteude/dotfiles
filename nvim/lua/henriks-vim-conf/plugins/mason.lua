@@ -24,10 +24,10 @@ return {
 		end,
 	},
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",  -- Geändert von jose-elias-alvarez/null-ls.nvim
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			local null_ls = require("null-ls")
+			local null_ls = require("null-ls")  -- API bleibt gleich
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.stylua,
@@ -38,4 +38,3 @@ return {
 		end,
 	},
 }
-
