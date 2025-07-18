@@ -15,7 +15,8 @@ disabled = true
 
 [kubernetes]
 disabled = false
-# format = '[$context( \($namespace\))]($style) '
+format = '[$context]($style) '
+
 
 [username]
 format = '[$user]($style) '

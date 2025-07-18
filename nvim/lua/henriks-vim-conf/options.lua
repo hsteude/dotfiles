@@ -74,10 +74,11 @@ vim.cmd([[set iskeyword+=-]])
 
 -- don't show diagnostics in virtual text!
 vim.diagnostic.config({
+    virtual_lines = false,
 	virtual_text = false,
 	underline = false,
 })
 
 
 vim.cmd("colorscheme rose-pine")
--- vim.cmd("set background=light")
+vim.cmd("set background=dark")

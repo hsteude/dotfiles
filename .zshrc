@@ -68,10 +68,9 @@ if [ -f '/Users/henrik/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/henrik/g
 if [ -f '/Users/henrik/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/henrik/google-cloud-sdk/completion.zsh.inc'; fi
 
 
-# export PATH="$HOME/.poetry/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+ export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 export TERM=tmux-256color
 # export TERM=xterm-kitty
 
