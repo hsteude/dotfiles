@@ -28,7 +28,8 @@ alias htop='TERM=xterm-256color htop'
 # When minikube creates a 'config' file, check that it contains nothing else and rename it to 'minikube.kubeconfig'
 # Select context with fzf (~/.kube/*.kubeconfig files)
 #alias kc='export KUBECONFIG=~/.kube/$(find ~/.kube/*.kubeconfig -type f -exec basename {} .kubeconfig "'";"'" | fzf).kubeconfig'
-alias kc='KUBECONFIG_SELECTED=$(find ~/.kube/*.kubeconfig -type f -exec basename {} .kubeconfig \; | fzf); cp ~/.kube/$KUBECONFIG_SELECTED.kubeconfig ~/.kube/config'
+alias kc=kubecm
+alias kcs='kubecm switch'
 # Select default namespace with fzf
 alias kn='kubectl config set-context --current --namespace=$(kubectl get ns --no-headers -o custom-columns=":metadata.name" | fzf)'
 alias knu="kubectl config set-context --current --namespace=\"\""  # unset

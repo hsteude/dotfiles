@@ -15,8 +15,7 @@ disabled = true
 
 [kubernetes]
 disabled = false
-format = '[$context]($style) '
-
+format = '[⎈ $context](bold red) '
 
 [username]
 format = '[$user]($style) '
